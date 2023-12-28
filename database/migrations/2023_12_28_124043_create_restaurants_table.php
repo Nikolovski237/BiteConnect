@@ -9,14 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('location')->nullable();
-            $table->string('cost')->nullable();
+            $table->text('cost')->nullable();
+            $table->timestamps();
         });
     }
 

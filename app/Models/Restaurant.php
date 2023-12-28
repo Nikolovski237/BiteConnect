@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
-    protected $fillable = ['name', 'description', 'location', 'cost'];
+    use HasFactory;
+
+    protected $fillable = ['name', 'description', 'location'];
+
+    public function menuItems()
+    {
+        return $this->hasMany(MenuItem::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
