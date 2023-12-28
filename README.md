@@ -1,12 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## About BiteConnect
 
 Welcome to BiteConnect, your go-to website for ordering delicious food from the best local restaurants in town. Whether you're craving pizza, burger, or something in between, BiteConnect makes it easy to satisfy your hunger with just a few clicks.
@@ -28,22 +21,22 @@ Tailor your order to perfection with our easy-to-use customization options. Extr
 
 To get started with BiteConnect, follow these simple steps:
 
-**Create an Account:**
+- **Create an Account:**
 Sign up for a BiteConnect account to unlock a personalized experience. Save your favorite restaurants, track your order history, and receive exclusive offers.
 
-**Browse Restaurants:**
+- **Browse Restaurants:**
 Explore the diverse selection of local restaurants. Filter by cuisine, ratings, and more to find the perfect dining option for any occasion.
 
-**Place Your Order:**
+- **Place Your Order:**
 Select your desired items from the menu, customize as needed, and add them to your cart. Once you're satisfied, proceed to checkout.
 
-**Secure Payment:**
+- **Secure Payment:**
 Choose your preferred payment method and complete the transaction securely. BiteConnect accepts various payment options for your convenience.
 
-**Enjoy Your Meal:**
+- **Enjoy Your Meal:**
 Once your order arrives, indulge in the delightful flavors of your favorite local cuisine. Don't forget to leave a review and share your experience!
 
-**Support and Feedback**
+- **Support and Feedback**
 Have questions or need assistance? Reach out to our dedicated support team at support@BiteConnect.com. We value your feedback and are continuously working to enhance your BiteConnect experience.
 
 Thank you for choosing BiteConnect. We're excited to be a part of your culinary journey!
