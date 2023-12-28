@@ -5,8 +5,6 @@
 
 Welcome to BiteConnect, your go-to website for ordering delicious food from the best local restaurants in town. Whether you're craving pizza, burger, or something in between, BiteConnect makes it easy to satisfy your hunger with just a few clicks.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
 ## Features
 
 - **Restaurant Selection**
