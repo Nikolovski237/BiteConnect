@@ -1,5 +1,5 @@
 
-![Logo](https://raw.githubusercontent.com/mn29983/BiteConnect/main/images/biteconnect-high-resolution-logo-white.png?token=GHSAT0AAAAAACMDXHXDZWZAPTXPQO32E2TMZMNNQZA)
+![Logo](https://raw.githubusercontent.com/mn29983/BiteConnect/main/images/biteconnect-high-resolution-logo.png?token=GHSAT0AAAAAACMDXHXC63FHUZFQO7E6XFWGZMNNPKA)
 
 ## About BiteConnect
 
