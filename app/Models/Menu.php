@@ -4,12 +4,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MenuItem extends Model
+class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'restaurant_id'];
+    protected $fillable = ['restaurant_id', 'name', 'description', 'price', 'image'];
 
+    // Define a relationship with the Restaurant model
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);

@@ -23,12 +23,12 @@
                         <td>{{ $restaurant->location }}</td>
                         <td>{{ $restaurant->cost }}</td>
                         <td>
-                            <a href="{{ route('restaurants.show', $restaurant->id) }}" class="btn btn-info">View</a>
+                            <a href="{{ route('restaurants.menu', $restaurant->id) }}" class="btn btn-info">View Menu</a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4">No restaurants available</td>
+                        <td colspan="5">No restaurants available</td>
                     </tr>
                 @endforelse
             </tbody>
