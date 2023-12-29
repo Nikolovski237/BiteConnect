@@ -20,16 +20,30 @@ class MenusTableSeeder extends Seeder
         // Insert sample data into the 'menus' table
         DB::table('menus')->insert([
             [
-                'restaurant_id' => $restaurantIds[array_rand($restaurantIds)],
+                'restaurant_id' => 1,
                 'name' => 'Item A',
                 'description' => 'Description for Item A.',
                 'price' => 12.99,
                 'image' => $faker->imageUrl(),
             ],
             [
-                'restaurant_id' => $restaurantIds[array_rand($restaurantIds)],
+                'restaurant_id' => 1,
                 'name' => 'Item B',
                 'description' => 'Description for Item B.',
+                'price' => 9.99,
+                'image' => $faker->imageUrl(),
+            ],
+            [
+                'restaurant_id' => 2,
+                'name' => 'Item C',
+                'description' => 'Description for Item C.',
+                'price' => 12.99,
+                'image' => $faker->imageUrl(),
+            ],
+            [
+                'restaurant_id' => 2,
+                'name' => 'Item D',
+                'description' => 'Description for Item D.',
                 'price' => 9.99,
                 'image' => $faker->imageUrl(),
             ],

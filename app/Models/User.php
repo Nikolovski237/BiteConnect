@@ -20,4 +20,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isMasterAdmin()
+    {
+        return $this->role === 'master_admin';
+    }
+
+    // Check if the user is a restaurant admin
+    public function isRestaurantAdmin()
+    {
+        return $this->role === 'restaurant_admin';
+    }
 }

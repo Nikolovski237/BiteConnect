@@ -47,6 +47,6 @@ class LoginController extends Controller
     protected function redirectPath()
     {
         // Customize the redirect path after successful login
-        return '/';
+        return 'restaurants';
     }
 }

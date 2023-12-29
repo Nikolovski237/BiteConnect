@@ -24,7 +24,7 @@ class RegisterController extends Controller
 
         // Optionally, you can authenticate the user here if needed
 
-        return redirect()->route('restaurants'); // Change 'home' to your desired route
+        return redirect()->route('restaurants.index');
     }
 
     protected function validator(array $data)

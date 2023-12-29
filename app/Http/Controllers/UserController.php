@@ -58,6 +58,5 @@ class UserController extends Controller
     {
         return view('users.show', compact('user'));
     }
-
     // Add methods for updating and deleting users as needed
 }

@@ -18,12 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('Home');});
 
-Route::resource('users', UserController::class);
-Route::resource('restaurants', RestaurantController::class);
+Route::resource('/users', UserController::class);
+Route::resource('/restaurants', RestaurantController::class);
 Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

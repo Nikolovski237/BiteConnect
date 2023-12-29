@@ -1,17 +1,14 @@
-<!-- resources/views/layouts/app.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Restaurant Delivery App</title>
-    <!-- Add your CSS stylesheets or CDN links here -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">Restaurant Delivery</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,11 +45,12 @@
             </div>
         </div>
     </nav>
+
     <div class="container mt-4">
-        @yield('content')
+        <h2>Welcome to Your Restaurant Delivery App</h2>
+        <p>Find and order delicious meals from your favorite restaurants.</p>
     </div>
 
-    <!-- Add your JavaScript scripts  -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

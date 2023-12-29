@@ -1,0 +1,57 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Light gray background color */
+}
+
+.navbar {
+    background-color: #ffffff; /* White background for the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Increase the font size of the brand */
+}
+
+.navbar-nav a {
+    color: #343a40; /* Dark text color for navbar links */
+}
+
+.navbar-nav a:hover {
+    color: #007bff; /* Highlight color on hover */
+}
+
+.container {
+    background-color: #ffffff; /* White background for the main content area */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 4px; /* Add rounded corners */
+}
+
+/* Optional: Style for the 'Home' and 'Restaurants' active states */
+.navbar-nav .active a {
+    font-weight: bold; /* Make the active link bold */
+}
+
+/* Optional: Style for the login/register links in the navbar */
+.navbar-nav.ml-auto .nav-link {
+    color: #007bff; /* Blue color for login/register links */
+}
+
+.navbar-nav.ml-auto .nav-link:hover {
+    text-decoration: underline; /* Underline on hover for login/register links */
+}
+
+/* Optional: Style for the logout link */
+.navbar-nav.ml-auto .nav-link[href*="logout"] {
+    color: #dc3545; /* Red color for logout link */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .navbar-toggler-icon {
+        background-color: #007bff; /* Blue color for the toggler icon */
+    }
+}
+
