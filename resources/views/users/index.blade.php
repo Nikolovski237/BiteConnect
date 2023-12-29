@@ -27,15 +27,11 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
-                        @auth
-                        @if(auth()->user()->isMasterAdmin())
                         <td>
-                                <div class="mb-3">
-                                    <a href="{{ route('users.edit', $user) }}" class="btn btn-success">Edit</a>
-                                </div>
-                            </td>
-                                @endif
-                            @endauth
+                            <div class="mb-3">
+                                <a href="{{ route('users.edit', $user) }}" class="btn btn-success">Edit</a>
+                            </div>
+                        </td>
                         <td>
                             <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">View</a>
                         </td>

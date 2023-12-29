@@ -44,11 +44,13 @@
                             <span> Welcome, {{ Auth::user()->name }}</span>
                         </li>
                     @endguest
-                    @can('view-users')
-                        <li class="nav-item">
+                    @auth
+                    @if(auth()->user()->isMasterAdmin())
+                    <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">View Users</a>
                         </li>
-                    @endcan
+                    @endif
+                    @endauth
                 </ul>
             </div>
         </div>

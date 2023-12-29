@@ -25,11 +25,20 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $this->authorize('update', $user);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|string|in:customer,restaurant_admin,master_admin',
+        ]);
 
-        // Validate and update user information here
+        // Explicitly set the 'role' attribute
+        $user->role = $validatedData['role'];
+        $user->update([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+        ]);
 
-        return redirect()->route('users.index')->with('success', 'User information updated successfully');
+        return redirect()->route('users.index', $user)->with('success', 'User updated successfully');
     }
 
     /**

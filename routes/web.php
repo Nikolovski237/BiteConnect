@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,14 +27,23 @@ Route::get('/', function () {return view('Home');});
 Route::resource('/users', UserController::class);
 Route::resource('/restaurants', RestaurantController::class);
 
-Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
-Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
-Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
-
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+
+Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
+Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
+Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
+
+
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/{user}', 'UserController@update')->name('users.update');
+
+
+
