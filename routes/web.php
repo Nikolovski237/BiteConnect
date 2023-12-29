@@ -16,13 +16,21 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
+Route::middleware(['auth', 'can:create-menu'])->group(function () {
+    Route::get('/restaurants/{restaurant}/createmenu', 'MenuController@create')->name('restaurants.createmenu');
+    Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
+});
 */
 
 Route::get('/', function () {return view('Home');});
 
 Route::resource('/users', UserController::class);
 Route::resource('/restaurants', RestaurantController::class);
+
 Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
+Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
+Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
+
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

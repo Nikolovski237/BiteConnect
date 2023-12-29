@@ -44,6 +44,11 @@
                             <span> Welcome, {{ Auth::user()->name }}</span>
                         </li>
                     @endguest
+                    @can('view-users')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users.index') }}">View Users</a>
+                        </li>
+                    @endcan
                 </ul>
             </div>
         </div>

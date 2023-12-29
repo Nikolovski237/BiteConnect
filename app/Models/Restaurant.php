@@ -9,11 +9,11 @@ class Restaurant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'location'];
+    protected $fillable = ['name', 'description', 'location', 'cost'];
 
     public function menuItems()
     {
-        return $this->hasMany(MenuItem::class);
+        return $this->hasMany(Menu::class);
     }
 
     public function reviews()

@@ -5,6 +5,14 @@
 @section('content')
     <div class="container">
         <h2>{{ $restaurant->name }} Menu</h2>
+        @auth
+            @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
+            <div class="mb-3">
+                <a href="{{ route('restaurants.createmenu', $restaurant->id) }}" class="btn btn-success">Create Menu Item</a>
+            </div>
+            @endif
+        @endauth        
+        
         <table class="table">
             <thead>
                 <tr>
