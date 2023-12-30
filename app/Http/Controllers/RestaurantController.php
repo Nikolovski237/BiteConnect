@@ -60,5 +60,31 @@ class RestaurantController extends Controller
         return view('restaurants.show', compact('restaurant'));
     }
 
-    // Add methods for updating and deleting restaurants as needed
+    public function edit(Restaurant $restaurant)
+    {
+        return view('restaurants.edit', compact('restaurant'));
+    }
+
+    public function update(Request $request, Restaurant $restaurant)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'location' => 'nullable|string',
+            'cost' => 'nullable|string|in:$,$$,$$$,$$$$,$$$$$',
+        ]);
+
+        $restaurant->update($validatedData);
+
+        return redirect()->route('restaurants.index')->with('success', 'Restaurant updated successfully');
+    }
+
+    public function destroy(Restaurant $restaurant)
+    {
+        $restaurant->delete();
+
+        return redirect()->route('restaurants.index')->with('success', 'Restaurant deleted successfully');
+    }
+
+
 }

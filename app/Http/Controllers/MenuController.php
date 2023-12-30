@@ -46,25 +46,27 @@ class MenuController extends Controller
         // Redirect back to the restaurant's menu
         return redirect()->route('restaurants.menu', ['restaurant' => $request->input('restaurant_id')])
             ->with('success', 'Menu item created successfully');   
+    }
 
-        /*
-        $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
-            'price' => 'nullable',
+    public function edit(Menu $menu)
+    {
+        $this->authorize('update', $menu);
+
+        return view('restaurants.editmenu', compact('menu'));
+    }
+
+    public function update(Request $request, Menu $menu)
+    {
+        $this->authorize('update', $menu);
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
         ]);
 
-        Restaurant::create($request->all());
+        $menu->update($validatedData);
 
-        return redirect()->route('restaurants.index')->with('success', 'Menu Item created successfully');
-
-
-
-       // $this->authorize('createMenu');
-    
-        // Your existing logic for storing the menu item
-    
-      //  return redirect()->route('restaurants.menu', ['restaurant' => $request->restaurant_id]);
-      */
+        return redirect()->route('restaurants.menu', ['restaurant' => $menu->restaurant_id])->with('success', 'Menu item updated successfully');
     }
 }
