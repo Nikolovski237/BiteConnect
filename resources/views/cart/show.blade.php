@@ -33,6 +33,7 @@
             </table>
 
             <p>Total Price: {{ $totalPrice }}</p>
+            <a href="{{ route('order.create') }}" class="btn btn-success">Order Now</a>
         @else
             <p>Your cart is currently empty.</p>
         @endif

@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -54,3 +55,8 @@ Route::post('/users/{user}', 'UserController@update')->name('users.update');
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/add/{menuItemId}', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::delete('/cart/{menuItemId}', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
+Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
+Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
+
