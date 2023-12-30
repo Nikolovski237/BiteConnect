@@ -1,5 +1,5 @@
 
-![Logo](https://imgur.com/1rRvo3m)
+![Logo]([https://imgur.com/1rRvo3m](https://imgur.com/PVzahHX))
 
 ## About BiteConnect
 
