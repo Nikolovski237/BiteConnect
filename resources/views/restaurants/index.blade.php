@@ -33,7 +33,7 @@
                         <td>{{ $restaurant->location }}</td>
                         <td>{{ $restaurant->cost }}</td>
                         <td>
-                            <a href="{{ route('restaurants.menu', $restaurant->id) }}" class="btn btn-info">View Menu</a>
+                            <a href="{{ route('menus.show', $restaurant->id) }}" class="btn btn-info">View Menu</a>
                         </td>
                         @auth
                             @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())

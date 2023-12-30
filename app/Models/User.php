@@ -25,10 +25,14 @@ class User extends Authenticatable
     {
         return $this->role === 'master_admin';
     }
-
-    // Check if the user is a restaurant admin
+    
     public function isRestaurantAdmin()
     {
         return $this->role === 'restaurant_admin';
+    }
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
     }
 }
