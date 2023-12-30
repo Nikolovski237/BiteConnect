@@ -25,6 +25,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                     </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
+                        </li>
+                    @endauth
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @guest

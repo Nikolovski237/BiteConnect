@@ -38,15 +38,15 @@
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this menu item?')">Delete</button>
                                     </form>
                                 @endif
-                                @if(auth()->check())
-                                <form action="{{ route('cart.add', ['menu' => $menuItem->id]) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Add to Cart</button>
-                                </form>
-                                @endif
+                            </td>
+                            <td>
+                            <form method="POST" action="{{ route('cart.addToCart', $menuItem->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </form>
+                        </td>
                             @endauth
                             
-                            </td>
                     </tr>
                 @empty
                     <tr>

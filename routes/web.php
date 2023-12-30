@@ -50,7 +50,7 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/{user}', 'UserController@update')->name('users.update');
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('/cart/add/{menu}', [CartController::class, 'addToCart'])->name('cart.add');
-});
 
+Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
+Route::post('/cart/add/{menuItemId}', [CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::delete('/cart/{menuItemId}', [CartController::class, 'remove'])->name('cart.remove');
