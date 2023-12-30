@@ -1,7 +1,8 @@
 
-![Logo]([[https://imgur.com/1rRvo3m](https://imgur.com/PVzahHX)](https://i.imgur.com/PVzahHX.png))
+![biteconnect-high-resolution-logo](https://github.com/mn29983/BiteConnect/assets/148076319/d712018d-5b40-4147-abe4-f2abf8d5cd16)
 
 ## About BiteConnect
+
 
 Welcome to BiteConnect, your go-to website for ordering delicious food from the best local restaurants in town. Whether you're craving pizza, burger, or something in between, BiteConnect makes it easy to satisfy your hunger with just a few clicks.
 
