@@ -19,7 +19,9 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
-                    <th>Actions</th> <!-- Add a new column for actions -->
+                    @auth
+                    <th>Actions</th>
+                    @endauth
                 </tr>
             </thead>
             <tbody>
@@ -40,11 +42,11 @@
                                 @endif
                             </td>
                             <td>
-                            <form method="POST" action="{{ route('cart.addToCart', $menuItem->id) }}">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Add to Cart</button>
-                            </form>
-                        </td>
+                                <form method="POST" action="{{ route('cart.addToCart', $menuItem->id) }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                </form>
+                            </td>
                             @endauth
                             
                     </tr>
