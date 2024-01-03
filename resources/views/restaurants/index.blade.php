@@ -10,50 +10,34 @@
                 </div>
             @endif
         @endauth
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Location</th>
-                    <th>Cost</th>
-                    <th>Menu</th>
-                    @auth
-                        @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
-                            <th>Action</th>
-                        @endif
-                    @endauth
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($restaurants as $restaurant)
-                    <tr>
-                        <td>{{ $restaurant->name }}</td>
-                        <td>{{ $restaurant->description }}</td>
-                        <td>{{ $restaurant->location }}</td>
-                        <td>{{ $restaurant->cost }}</td>
-                        <td>
+        <div class="row">
+            @forelse($restaurants as $restaurant)
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $restaurant->name }}</h5>
+                            <p class="card-text">Description: {{ $restaurant->description }}</p>
+                            <p class="card-text">Location: {{ $restaurant->location }}</p>
+                            <p class="card-text">Cost: {{ $restaurant->cost }}</p>
                             <a href="{{ route('menus.show', $restaurant->id) }}" class="btn btn-info">View Menu</a>
-                        </td>
-                        @auth
-                            @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
-                                <td>
+                            @auth
+                                @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
                                     <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="btn btn-warning">Edit</a>
                                     <form action="{{ route('restaurants.destroy', $restaurant->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                                     </form>
-                                </td>
-                            @endif
-                        @endauth
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="6">No restaurants available</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                                @endif
+                            @endauth
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="col-md-12">
+                    <p>No restaurants available</p>
+                </div>
+            @endforelse
+        </div>
     </div>
 @endsection
