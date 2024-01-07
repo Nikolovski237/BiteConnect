@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>All Restaurants</h2>
+        <h2>All restaurants</h2>
         @auth
             @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
                 <div class="mb-3">
