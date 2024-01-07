@@ -5,6 +5,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\FoodCategoryController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -60,3 +61,4 @@ Route::get('/orders/create', [OrderController::class, 'create'])->name('order.cr
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
+Route::get('/food-categories', 'FoodCategoryController@index')->name('foodCategories.index');

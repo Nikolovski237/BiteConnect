@@ -16,6 +16,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Other boot logic...
+        Gate::define('manage-food-categories', function ($user) {
+            return $user->isMasterAdmin();
+        });
     }
 }
