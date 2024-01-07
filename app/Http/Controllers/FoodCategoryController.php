@@ -1,16 +1,17 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\FoodCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\FoodCategory;
+
 
 class FoodCategoryController extends Controller
 {
     public function index()
     {
         $foodCategories = FoodCategory::all();
-
-        return view('food_categories.index', compact('foodCategories'));
+        return view('layouts.app', compact('foodCategories'));
     }
 
     public function create()

@@ -1,5 +1,3 @@
-<!-- resources/views/restaurants/menu.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
@@ -20,7 +18,8 @@
                     <th>Description</th>
                     <th>Price</th>
                     @auth
-                    <th>Actions</th>
+                    <th>Action</th>
+                    <th></th>
                     @endauth
                 </tr>
             </thead>
@@ -30,8 +29,16 @@
                         <td>{{ $menuItem->name }}</td>
                         <td>{{ $menuItem->description }}</td>
                         <td>{{ $menuItem->price }}</td>
+                        @auth
                         <td>
-                            @auth
+                                <form method="POST" action="{{ route('cart.addToCart', $menuItem->id) }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                </form>
+                        </td>
+                        @endauth
+                        @auth
+                        <td>
                                 @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
                                 <a href="{{ route('menus.edit', $menuItem->id) }}" class="btn btn-primary">Edit</a>
                                     <form method="POST" action="{{ route('menus.destroy', $menuItem->id) }}" style="display:inline;">
@@ -40,14 +47,8 @@
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this menu item?')">Delete</button>
                                     </form>
                                 @endif
-                            </td>
-                            <td>
-                                <form method="POST" action="{{ route('cart.addToCart', $menuItem->id) }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Add to Cart</button>
-                                </form>
-                            </td>
-                            @endauth
+                        </td>
+                        @endauth
                             
                     </tr>
                 @empty

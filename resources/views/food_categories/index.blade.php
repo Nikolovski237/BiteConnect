@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content1')
     <div class="container">
         <h2>Food Categories</h2>
 
@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($foodCategories as $foodCategory)
+                @forelse ($foodCategories as $foodCategory)
                     <tr>
                         <td>{{ $foodCategory->name }}</td>
                         <td>{{ $foodCategory->description }}</td>
@@ -36,7 +36,11 @@
                             </td>
                         @endcan
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="3">No food categories available.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

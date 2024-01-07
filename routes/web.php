@@ -61,4 +61,6 @@ Route::get('/orders/create', [OrderController::class, 'create'])->name('order.cr
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
-Route::get('/food-categories', 'FoodCategoryController@index')->name('foodCategories.index');
+Route::get('/food-categories', [FoodCategoryController::class, 'index'])->name('food_categories.index');
+Route::get('food_categories/create', [FoodCategoryController::class, 'create'])->name('food_categories.create')->middleware('can:manage-food-categories');
+Route::get('food_categories/{food_category}/edit', [FoodCategoryController::class, 'edit'])->name('food_categories.edit')->middleware('can:manage-food-categories');

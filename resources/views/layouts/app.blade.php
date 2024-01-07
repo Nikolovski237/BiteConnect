@@ -26,43 +26,45 @@
                         <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                     </li>
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
+                    </li>
                     @endauth
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            <span> Welcome, {{ Auth::user()->name }}</span>
-                        </li>
-                    @endguest
                     @auth
                     @if(auth()->user()->isMasterAdmin())
-                    <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">View Users</a>
                         </li>
                     @endif
                     @endauth
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <span> Welcome, {{ Auth::user()->name }}</span>
+                    </li>
+                    @endguest
                 </ul>
             </div>
         </div>
     </nav>
-    
     <div class="container mt-4">
         @include('food_categories.index')
-
+        @yield('content1')
+    </div>
+        
+    <div class="container mt-4">
         @yield('content')
     </div>
 
