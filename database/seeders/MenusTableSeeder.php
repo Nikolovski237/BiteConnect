@@ -14,10 +14,8 @@ class MenusTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        // Retrieve the IDs of all restaurants
         $restaurantIds = \App\Models\Restaurant::pluck('id')->toArray();
 
-        // Insert sample data into the 'menus' table
         DB::table('menus')->insert([
             [
                 'restaurant_id' => 1,
