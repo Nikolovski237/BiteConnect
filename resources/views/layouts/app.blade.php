@@ -1,5 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +7,8 @@
     <!-- Add your CSS stylesheets or CDN links here -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -59,11 +59,9 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-4">
-        <section class="food-types bg-light py-3">
-            <div class="container">
-                @include('food_types')
-            </div>
+    <div class="container mt-4" id="foodTypesContainer">
+    <section class="food-types bg-light py-3">
+            @include('food_types')
         </section>
     </div>
         
@@ -73,5 +71,8 @@
 
     <!-- Add your JavaScript scripts  -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

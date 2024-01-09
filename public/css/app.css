@@ -43,6 +43,11 @@ body {
     text-decoration: underline; /* Underline on hover for login/register links */
 }
 
+.custom-card-img {
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
 /* Optional: Style for the logout link */
 .navbar-nav.ml-auto .nav-link[href*="logout"] {
     color: #dc3545; /* Red color for logout link */
