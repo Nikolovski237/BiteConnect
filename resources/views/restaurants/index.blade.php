@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+        <section class="food-types bg-light py-3">
+            @include('food_types')
+        </section>
     <div class="container">
         <h2>All restaurants</h2>
         @auth
