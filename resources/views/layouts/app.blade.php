@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Restaurant Delivery App</title>
+    <title>Bite Connect</title>
     <!-- Add your CSS stylesheets or CDN links here -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Restaurant Delivery</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Bite Connect</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -60,8 +60,11 @@
         </div>
     </nav>
     <div class="container mt-4">
-        @include('food_categories.index')
-        @yield('content1')
+        <section class="food-types bg-light py-3">
+            <div class="container">
+                @include('food_types')
+            </div>
+        </section>
     </div>
         
     <div class="container mt-4">
