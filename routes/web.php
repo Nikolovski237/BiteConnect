@@ -19,10 +19,6 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-Route::middleware(['auth', 'can:create-menu'])->group(function () {
-    Route::get('/restaurants/{restaurant}/createmenu', 'MenuController@create')->name('restaurants.createmenu');
-    Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
-});
 */
 
 Route::get('/', function () {return view('Home');});
@@ -60,7 +56,3 @@ Route::delete('/cart/{menuItemId}', [CartController::class, 'remove'])->name('ca
 Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
-
-Route::get('/food-categories', [FoodCategoryController::class, 'index'])->name('food_categories.index');
-Route::get('food_categories/create', [FoodCategoryController::class, 'create'])->name('food_categories.create')->middleware('can:manage-food-categories');
-Route::get('food_categories/{food_category}/edit', [FoodCategoryController::class, 'edit'])->name('food_categories.edit')->middleware('can:manage-food-categories');
