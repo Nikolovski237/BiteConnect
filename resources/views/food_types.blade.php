@@ -67,7 +67,7 @@
                 </div>
                 <div class="card">
                     <a href="#">
-                        <img src="{{ asset('images/Food/Desert.jpg') }}" class="card-img-top custom-card-img" alt="Desert">
+                        <img src="{{ asset('images/Food/Pancake.jpg') }}" class="card-img-top custom-card-img" alt="Desert">
                         <div class="card-body">
                             <h5 class="card-title">Desert</h5>
                         </div>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="card">
                     <a href="#">
-                        <img src="{{ asset('images/Food/Fish.jpg') }}" class="card-img-top custom-card-img" alt="Fish">
+                        <img src="{{ asset('images/Food/Fish.png') }}" class="card-img-top custom-card-img" alt="Fish">
                         <div class="card-body">
                             <h5 class="card-title">Fish</h5>
                         </div>
@@ -91,10 +91,8 @@
                 </div>
             </div>
         </div>
-        <!-- Repeat this structure for additional sets of 5 cards -->
     </div>
 
-    <!-- Add navigation buttons -->
     <a class="carousel-control-prev" href="#foodSlider" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>

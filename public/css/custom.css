@@ -3,7 +3,8 @@
     top: 5rem;
     width: 5rem; /* Adjust the width as needed */
     height: 5rem; /* Adjust the height as needed */
-    background-color: #ee866e; /* Change the background color as needed */
+    background-color: #ff2f00; /* Change the background color as needed */
+    border-radius: 100%;
 }
 
 /* Position carousel control buttons on the sides */
