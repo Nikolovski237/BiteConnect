@@ -36,6 +36,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
 Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
+Route::get('/restaurants/food-type/{foodType}', [RestaurantController::class, 'showByFoodType'])->name('restaurants.showByFoodType');
 
 Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
 Route::get('/menus/{restaurant}', [MenuController::class, 'show'])->name('menus.show');

@@ -86,5 +86,13 @@ class RestaurantController extends Controller
         return redirect()->route('restaurants.index')->with('success', 'Restaurant deleted successfully');
     }
 
+    public function showByFoodType($foodType)
+    {
+        $restaurants = Restaurant::whereHas('menu.items', function ($query) use ($foodType) {
+            $query->where('type', $foodType);
+        })->get();
+
+        return view('restaurants.index', compact('restaurants'));
+    }
 
 }

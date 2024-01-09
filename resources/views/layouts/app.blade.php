@@ -59,13 +59,12 @@
             </div>
         </div>
     </nav>
+
+        
     <div class="container mt-4" id="foodTypesContainer">
-    <section class="food-types bg-light py-3">
+        <section class="food-types bg-light py-3">
             @include('food_types')
         </section>
-    </div>
-        
-    <div class="container mt-4">
         @yield('content')
     </div>
 
