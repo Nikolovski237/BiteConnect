@@ -15,6 +15,7 @@ class CreateMenusTable extends Migration
             $table->foreignId('restaurant_id')->constrained();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->enum('role', ['Burger', 'Pizza', 'Pasta', 'Salad', 'Soup', 'Sandwich', 'Wraps', 'Desert', 'Fish', 'BBQ']);
             $table->decimal('price', 8, 2);
             $table->string('image')->nullable(); // New column for the image
             $table->timestamps();

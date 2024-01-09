@@ -23,6 +23,7 @@ class MenusTableSeeder extends Seeder
                 'restaurant_id' => 1,
                 'name' => 'Item A',
                 'description' => 'Description for Item A.',
+                'type' => 'Burger',
                 'price' => 12.99,
                 'image' => $faker->imageUrl(),
             ],
@@ -30,6 +31,7 @@ class MenusTableSeeder extends Seeder
                 'restaurant_id' => 1,
                 'name' => 'Item B',
                 'description' => 'Description for Item B.',
+                'type' => 'Pizza',
                 'price' => 9.99,
                 'image' => $faker->imageUrl(),
             ],
@@ -37,6 +39,7 @@ class MenusTableSeeder extends Seeder
                 'restaurant_id' => 2,
                 'name' => 'Item C',
                 'description' => 'Description for Item C.',
+                'type' => 'Pasta',
                 'price' => 12.99,
                 'image' => $faker->imageUrl(),
             ],
@@ -44,10 +47,10 @@ class MenusTableSeeder extends Seeder
                 'restaurant_id' => 2,
                 'name' => 'Item D',
                 'description' => 'Description for Item D.',
+                'type' => 'Salad',
                 'price' => 9.99,
                 'image' => $faker->imageUrl(),
             ],
-            // Add more menu items as needed
         ]);
     }
 }
