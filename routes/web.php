@@ -36,17 +36,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::middleware(['auth', 'checkRole:master_admin'])->group(function () {
-    Route::get('/auth/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('layouts.app');
-    });
-});
-
-
 Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
 Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
 Route::get('/restaurants/food-type/{foodType}', [RestaurantController::class, 'showByFoodType'])->name('restaurants.showByFoodType');
