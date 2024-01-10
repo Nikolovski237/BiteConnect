@@ -20,4 +20,9 @@ class Restaurant extends Model
     {
         return $this->hasMany(Review::class);
     }
+    
+    public function getImageUrlAttribute()
+    {
+        return $this->attributes['image'] ? Storage::url($this->attributes['image']) : null;
+    }
 }

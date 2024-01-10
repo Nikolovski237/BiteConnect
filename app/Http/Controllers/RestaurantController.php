@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -42,9 +43,17 @@ class RestaurantController extends Controller
             'description' => 'nullable',
             'location' => 'nullable',
             'cost' => 'nullable',
-            'image' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        
+        
+    $restaurantData = $request->except('image');
 
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('public/images/restaurants');
+        $restaurantData['image'] = Storage::url($imagePath);
+    }
         Restaurant::create($request->all());
 
         return redirect()->route('restaurants.index')->with('success', 'Restaurant created successfully');
@@ -75,6 +84,7 @@ class RestaurantController extends Controller
             'cost' => 'nullable|string|in:$,$$,$$$,$$$$,$$$$$',
             'image' => 'nullabel|string',
         ]);
+
 
         $restaurant->update($validatedData);
 
