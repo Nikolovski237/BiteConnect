@@ -46,15 +46,13 @@ class RestaurantController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         
-        
-    $restaurantData = $request->except('image');
+        $restaurantData = $request->except('image');
 
-    // Handle image upload
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('public/images/restaurants');
-        $restaurantData['image'] = Storage::url($imagePath);
-    }
-        Restaurant::create($request->all());
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/images/restaurants');
+            $restaurantData['image'] = Storage::url($imagePath);
+        }
+            Restaurant::create($request->all());
 
         return redirect()->route('restaurants.index')->with('success', 'Restaurant created successfully');
     }
@@ -82,11 +80,18 @@ class RestaurantController extends Controller
             'description' => 'nullable|string',
             'location' => 'nullable|string',
             'cost' => 'nullable|string|in:$,$$,$$$,$$$$,$$$$$',
-            'image' => 'nullabel|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $restaurantData = $request->except('image');
 
-        $restaurant->update($validatedData);
+        if ($request->hasFile('image')) {
+
+            $imagePath = $request->file('image')->store('public/images/restaurants');
+            $restaurantData['image'] = Storage::url($imagePath);
+        }
+
+        $restaurant->update(array_merge($validatedData, $restaurantData));
 
         return redirect()->route('restaurants.index')->with('success', 'Restaurant updated successfully');
     }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2>Edit Restaurant</h2>
-        <form method="POST" action="{{ route('restaurants.update', $restaurant->id) }}">
+        <form method="POST" action="{{ route('restaurants.update', $restaurant->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -31,6 +31,11 @@
                 <option value="$$$$" {{ $restaurant->cost === '$$$$' ? 'selected' : '' }}>$$$$</option>
                 <option value="$$$$$" {{ $restaurant->cost === '$$$$$' ? 'selected' : '' }}>{{ $restaurant->cost === '$$$$$' ? '$$$$$' : '' }}</option>
                 </select>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Restaurant Image</label>
+                <input type="file" class="form-control-file" id="image" name="image">
             </div>
 
             <button type="submit" class="btn btn-primary">Update Restaurant</button>

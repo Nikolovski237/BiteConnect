@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h2>Create Restaurant</h2>
-        <form method="POST" action="{{ route('restaurants.store') }}">
+        <form method="POST" action="{{ route('restaurants.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
