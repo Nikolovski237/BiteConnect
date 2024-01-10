@@ -5,10 +5,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\FoodCategoryController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -23,10 +21,22 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {return view('Home');});
-
 
 Route::resource('/users', UserController::class);
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/{user}', 'UserController@update')->name('users.update');
+
+Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
+
+Route::delete('/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
+Route::put('/menus/{menu}', [MenuController::class, 'update'])->name('menus.update');
+Route::get('/menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
+Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
+
+
+
+Route::get('/', function () {return view('Home');});
 Route::resource('/restaurants', RestaurantController::class);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -37,19 +47,10 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
-Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
 Route::get('/restaurants/food-type/{foodType}', [RestaurantController::class, 'showByFoodType'])->name('restaurants.showByFoodType');
-
-Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
 Route::get('/menus/{restaurant}', [MenuController::class, 'show'])->name('menus.show');
-Route::delete('/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
-Route::put('/menus/{menu}', [MenuController::class, 'update'])->name('menus.update');
-Route::get('/menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
 
 
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::post('/users/{user}', 'UserController@update')->name('users.update');
 
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
@@ -59,3 +60,4 @@ Route::delete('/cart/{menuItemId}', [CartController::class, 'remove'])->name('ca
 Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
+
