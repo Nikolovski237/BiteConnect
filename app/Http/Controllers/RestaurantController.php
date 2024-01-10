@@ -42,6 +42,7 @@ class RestaurantController extends Controller
             'description' => 'nullable',
             'location' => 'nullable',
             'cost' => 'nullable',
+            'image' => 'nullable',
         ]);
 
         Restaurant::create($request->all());
@@ -72,6 +73,7 @@ class RestaurantController extends Controller
             'description' => 'nullable|string',
             'location' => 'nullable|string',
             'cost' => 'nullable|string|in:$,$$,$$$,$$$$,$$$$$',
+            'image' => 'nullabel|string',
         ]);
 
         $restaurant->update($validatedData);
