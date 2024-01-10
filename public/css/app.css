@@ -29,10 +29,6 @@ body {
     border-radius: 4px; /* Add rounded corners */
 }
 
-/* Optional: Style for the 'Home' and 'Restaurants' active states */
-.navbar-nav .active a {
-    font-weight: bold; /* Make the active link bold */
-}
 
 /* Optional: Style for the login/register links in the navbar */
 .navbar-nav.ml-auto .nav-link {
@@ -50,7 +46,7 @@ body {
 
 /* Optional: Style for the logout link */
 .navbar-nav.ml-auto .nav-link[href*="logout"] {
-    color: #dc3545; /* Red color for logout link */
+    color: #eb2d40; /* Red color for logout link */
 }
 
 /* Responsive styles for smaller screens */

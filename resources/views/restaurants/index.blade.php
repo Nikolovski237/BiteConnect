@@ -15,15 +15,15 @@
     @endauth
     <div class="row">
         @forelse($restaurants as $restaurant)
-        <div class="col-md-4 mb-4">
+        <div class="col-md-6 mb-4"> <!-- Adjusted the column size to col-md-6 -->
             <a href="{{ route('menus.show', $restaurant->id) }}" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <img src="{{ asset($restaurant->image) }}" class="card-img-top" alt="{{ $restaurant->name }}">
+                    <img src="{{ asset($restaurant->image) }}" class="card-img-top" style="height: 250px; object-fit: cover;" alt="{{ $restaurant->name }}">
                     <div class="card-body">
                         <h5 class="card-title" style="font-size: 1.5em; margin-bottom: 0.5em;">{{ $restaurant->name }}</h5>
                         <p class="card-text" style="font-size: 1em; margin-bottom: 1em;">{{ $restaurant->description }}</p>
-                        <p class="card-text">Location: {{ $restaurant->location }}</p>
-                        <p class="card-text">Cost: {{ $restaurant->cost }}</p>
+                        <p class="card-text" style="font-size: 0.8em;">Location: {{ $restaurant->location }}</p>
+                        <p class="card-text" style="font-size: 0.8em;">Cost: {{ $restaurant->cost }}</p>
                         @auth
                         @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
                         <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="btn btn-warning">Edit</a>

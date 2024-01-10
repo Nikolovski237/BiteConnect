@@ -15,3 +15,7 @@
 .carousel-control-next {
     right: -6rem; /* Adjust the right position as needed */
 }
+
+.container-slightly-wider {
+    max-width: 1200px; /* Adjust the value based on your preference */
+}

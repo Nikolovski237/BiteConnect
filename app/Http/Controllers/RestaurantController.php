@@ -45,17 +45,19 @@ class RestaurantController extends Controller
             'cost' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         $restaurantData = $request->except('image');
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images/restaurants');
-            $restaurantData['image'] = Storage::url($imagePath);
+            $restaurantData['image'] = 'storage/' . str_replace('public/', '', $imagePath); // Adjust the image path
         }
-            Restaurant::create($request->all());
+
+        Restaurant::create($restaurantData);
 
         return redirect()->route('restaurants.index')->with('success', 'Restaurant created successfully');
     }
+
 
     /**
      * Display the specified restaurant.

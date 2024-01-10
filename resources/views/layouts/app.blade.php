@@ -60,8 +60,7 @@
         </div>
     </nav>
 
-        
-    <div class="container mt-4" id="foodTypesContainer">
+    <div class="container mt-4 container-slightly-wider" id="foodTypesContainer">
         @yield('content')
     </div>
 
