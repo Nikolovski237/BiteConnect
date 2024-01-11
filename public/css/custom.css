@@ -1,21 +1,29 @@
 .carousel-control-prev,
-.carousel-control-next {
-    top: 5rem;
+.carousel-control-next{
+    top: 7rem;
     width: 5rem; /* Adjust the width as needed */
     height: 5rem; /* Adjust the height as needed */
-    background-color: #ff2f00; /* Change the background color as needed */
+    background-color: #E55604; /* Change the background color as needed */
     border-radius: 100%;
 }
 
 /* Position carousel control buttons on the sides */
 .carousel-control-prev {
-    left: -6rem; /* Adjust the left position as needed */
+    left: -5rem; /* Adjust the left position as needed */
 }
 
 .carousel-control-next {
-    right: -6rem; /* Adjust the right position as needed */
+    right: -5rem; /* Adjust the right position as needed */
 }
 
-.container-slightly-wider {
-    max-width: 1200px; /* Adjust the value based on your preference */
+.carousel-inner{
+    background-color: #EBE4D1;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
 }
+
+#foodTypesContainer {
+    max-width: 1500px; /* Adjust the value based on your preference */
+}
+

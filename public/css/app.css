@@ -1,7 +1,21 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa; /* Light gray background color */
+    background-color: #EBE4D1; /* Light gray background color */
+}
+
+.container {
+    background-color: #EBE4D1; /* White background for the main content area */
+}
+
+.custom-card-img {
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+.card{
+    border-radius: 10%;
+    color: #26577C;
 }
 
 .navbar {
@@ -10,7 +24,7 @@ body {
 }
 
 .navbar-brand {
-    font-size: 1.5rem; /* Increase the font size of the brand */
+    font-size: 1.2rem; /* Increase the font size of the brand */
 }
 
 .navbar-nav a {
@@ -18,36 +32,24 @@ body {
 }
 
 .navbar-nav a:hover {
-    color: #007bff; /* Highlight color on hover */
+    color: #E55604; /* Highlight color on hover */
 }
-
-.container {
-    background-color: #ffffff; /* White background for the main content area */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 4px; /* Add rounded corners */
-}
-
 
 /* Optional: Style for the login/register links in the navbar */
 .navbar-nav.ml-auto .nav-link {
-    color: #007bff; /* Blue color for login/register links */
+    color: #E55604; /* Blue color for login/register links */
 }
 
 .navbar-nav.ml-auto .nav-link:hover {
     text-decoration: underline; /* Underline on hover for login/register links */
 }
 
-.custom-card-img {
-    height: 200px; /* Adjust the height as needed */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
-}
-
 /* Optional: Style for the logout link */
 .navbar-nav.ml-auto .nav-link[href*="logout"] {
     color: #eb2d40; /* Red color for logout link */
 }
+
+
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
