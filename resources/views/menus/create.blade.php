@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -25,7 +24,6 @@
             <div class="form-group">
                 <label for="restaurant_id">Restaurant</label>
                 <select class="form-control" id="restaurant_id" name="restaurant_id">
-                    <!-- Assuming you have a list of restaurants available -->
                     @foreach ($restaurants as $restaurant)
                         <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
                     @endforeach

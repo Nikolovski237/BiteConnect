@@ -37,19 +37,6 @@
                                 </form>
                         </td>
                         @endauth
-                        @auth
-                        <td>
-                                @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
-                                <a href="{{ route('menus.edit', $menuItem->id) }}" class="btn btn-primary">Edit</a>
-                                    <form method="POST" action="{{ route('menus.destroy', $menuItem->id) }}" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this menu item?')">Delete</button>
-                                    </form>
-                                @endif
-                        </td>
-                        @endauth
-                            
                     </tr>
                 @empty
                     <tr>

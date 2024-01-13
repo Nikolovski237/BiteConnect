@@ -1,37 +1,3 @@
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #EBE4D1; /* Light gray background color */
-}
-
-.container {
-    background-color: #EBE4D1; /* White background for the main content area */
-}
-
-.custom-card-img {
-    height: 200px; /* Adjust the height as needed */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
-}
-
-.card{
-    border-radius: 10%;
-    color: #26577C;
-}
-
-.card a:hover{
-    text-decoration: none;
-    border-radius: 10%;
-    background-color: #f0f0f0; /* Change the background color to a different shade */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
-
-}
-.card-title{
-    color: #E55604;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:x-large;
-}
-
-
 .navbar {
     background-color: #ff9e00;
     padding: 10px;
@@ -40,40 +6,37 @@ body {
     top: 0;
     z-index: 1000;
     font-family: Arial, Helvetica, sans-serif;
-    font-size:large;
-}
-
-.navbar-brand {
-    font-size: 1.2rem; /* Increase the font size of the brand */
+    font-size: 1.4rem;
 }
 
 .navbar-nav a {
-    color: #5a189a; /* Dark text color for navbar links */
+    color: #001f3f;
 }
 
 .navbar-nav a:hover {
-    color: #240046; /* Highlight color on hover */
-}
-
-/* Optional: Style for the login/register links in the navbar */
-.navbar-nav.ml-auto .nav-link {
-    color: #5a189a; /* Blue color for login/register links */
+    color: #63b1ff;
 }
 
 .navbar-nav.ml-auto .nav-link:hover {
-    text-decoration: none; /* Underline on hover for login/register links */
+    text-decoration: none;
 }
 
-/* Optional: Style for the logout link */
 .navbar-nav.ml-auto .nav-link[href*="logout"] {
-    color: #eb2d40; /* Red color for logout link */
+    color: #eb2d40;
 }
 
+.navbar-brand img {
+    max-width: 150px;
+}
 
+.form-search-container {
+    margin: auto;
+    width: 0px;
+}
 
-/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
-    .navbar-toggler-icon {
-        background-color: #007bff; /* Blue color for the toggler icon */
+    .form-search-container {
+        width: 100%;
+        margin: 0;
     }
 }
