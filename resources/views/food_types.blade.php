@@ -1,5 +1,4 @@
-
-<div id="foodSlider" class="carousel slide" data-ride="carousel">
+<div id="foodSlider" class="carousel slide">
     <div class="carousel-inner">
         <h3>Food categories</h3>
         <div class="carousel-item active">

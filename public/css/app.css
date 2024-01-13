@@ -1,6 +1,6 @@
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #EBE4D1; /* Light gray background color */
 }
 
@@ -18,9 +18,29 @@ body {
     color: #26577C;
 }
 
+.card a:hover{
+    text-decoration: none;
+    border-radius: 10%;
+    background-color: #f0f0f0; /* Change the background color to a different shade */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+
+}
+.card-title{
+    color: #E55604;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:x-large;
+}
+
+
 .navbar {
-    background-color: #ffffff; /* White background for the navbar */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    background-color: #ff9e00;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:large;
 }
 
 .navbar-brand {
@@ -28,20 +48,20 @@ body {
 }
 
 .navbar-nav a {
-    color: #343a40; /* Dark text color for navbar links */
+    color: #5a189a; /* Dark text color for navbar links */
 }
 
 .navbar-nav a:hover {
-    color: #E55604; /* Highlight color on hover */
+    color: #240046; /* Highlight color on hover */
 }
 
 /* Optional: Style for the login/register links in the navbar */
 .navbar-nav.ml-auto .nav-link {
-    color: #E55604; /* Blue color for login/register links */
+    color: #5a189a; /* Blue color for login/register links */
 }
 
 .navbar-nav.ml-auto .nav-link:hover {
-    text-decoration: underline; /* Underline on hover for login/register links */
+    text-decoration: none; /* Underline on hover for login/register links */
 }
 
 /* Optional: Style for the logout link */
