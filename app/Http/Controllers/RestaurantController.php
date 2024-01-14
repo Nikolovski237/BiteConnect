@@ -50,7 +50,7 @@ class RestaurantController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images/restaurants');
-            $restaurantData['image'] = 'storage/' . str_replace('public/', '', $imagePath); // Adjust the image path
+            $restaurantData['image'] = 'storage/' . str_replace('public/', '', $imagePath);
         }
 
         Restaurant::create($restaurantData);

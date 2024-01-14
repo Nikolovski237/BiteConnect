@@ -1,12 +1,12 @@
 .navbar {
     background-color: #ff9e00;
-    padding: 10px;
+    padding: 5px;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 .navbar-nav a {
@@ -32,6 +32,16 @@
 .form-search-container {
     margin: auto;
     width: 0px;
+}
+
+.navbar-text {
+    font-size: 1rem; /* Adjust the font size for the welcome message */
+    margin-right: 10px; /* Add margin to separate the welcome message from the logout link */
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 768px) {

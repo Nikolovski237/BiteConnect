@@ -26,9 +26,6 @@
 					Users
 				</a>
 				<a href="#">
-					Cards
-				</a>
-				<a href="#">
 					Orders
 				</a>
                 <a></a>
@@ -38,7 +35,7 @@
 			<button class="user-profile">
             <span class="navbar-text">{{ Auth::user()->name }}</span>
 			<span>
-                ✕
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">X</a>
 			</span>
 			</button>
 		</div>
@@ -51,6 +48,10 @@
 					<i class="ph-browsers"></i>
 					<span>Dashboard</span>
 				</a>
+                <a href="{{ url('/') }}">
+					<i class="ph-check-square"></i>
+					<span>User Site</span>
+				</a>
 				<a href="#">
 					<i class="ph-check-square"></i>
 					<span>Messages</span>
@@ -58,7 +59,15 @@
 			</nav>
 		</div>
 		<div>
-        @yield('content')
+        <div class="container">
+            <h2>All restaurants</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>No restaurants available</p>
+                </div>
+            </div>
+        </div>
+
         </div>
 </body>
 </html>

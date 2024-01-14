@@ -24,6 +24,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                 </li>
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
+                </li>
+                @endauth
             </ul>
             <div class="form-search-container">
                 <form class="form-inline navbar-form">
@@ -41,7 +46,7 @@
                 @else
                 <li class="nav-item">
                     <span class="navbar-text">Welcome, {{ Auth::user()->name }}</span>
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <a class="nav-link navbar-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

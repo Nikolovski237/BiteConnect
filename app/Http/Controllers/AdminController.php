@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+    public function index()
     {
         $users = User::all();
-        $orders = Order::all();
+      //  $orders = Order::all();
 
-        return view('admin.dashboard', compact('users', 'orders'));
+    return view('admin.dashboard', compact('users'/*, 'orders'*/));
     }
 
     public function viewUsers()
@@ -29,7 +29,6 @@ class AdminController extends Controller
 
     public function updateUser(Request $request, User $user)
     {
-        // Update user logic here
         return redirect()->route('admin.viewUsers')->with('success', 'User updated successfully');
     }
 
@@ -39,6 +38,4 @@ class AdminController extends Controller
         return redirect()->route('admin.viewUsers')->with('success', 'User deleted successfully');
     }
 
-    // Add similar methods for viewing, creating, editing, and deleting restaurants and menu items
-    // ...
 }
