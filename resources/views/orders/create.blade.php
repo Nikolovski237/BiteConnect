@@ -52,6 +52,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Place Order</button>
+            <input type="hidden" name="redirect" id="redirect" value="{{ route('order.thankyou') }}">
         </form>
     </div>
 

@@ -26,7 +26,7 @@
 				<a href="{{ url('/users') }}">
 					Users
 				</a>
-				<a href="#">
+				<a href="{{ url('/orders') }}">
 					Orders
 				</a>
                 <a></a>
@@ -45,7 +45,7 @@
 	<div class="app-body">
 		<div class="app-body-navigation">
 			<nav class="navigation">
-				<a href="#">
+				<a href="{{ url('/dashboard') }}">
 					<i class="ph-browsers"></i>
 					<span>Dashboard</span>
 				</a>

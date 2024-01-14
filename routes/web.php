@@ -49,6 +49,7 @@ Route::get('/orders/create', [OrderController::class, 'create'])->name('order.cr
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
+
 // Authenticated Routes
 Route::middleware(['auth', 'role:master_admin'])->group(function () {
     Route::resource('/dashboard', RestaurantController::class);
@@ -77,5 +78,8 @@ Route::middleware(['auth', 'role:master_admin'])->group(function () {
     Route::get('/menus/{menu}/edit', [AdminController::class, 'editMenu'])->name('menus.edit');
     Route::post('/menus', [AdminController::class, 'storeMenu'])->name('menus.store');
     Route::get('/restaurants/{restaurant}/createmenu', [AdminController::class, 'createMenu'])->name('menus.create');
+
+    //ORDERS
+    Route::get('/orders', [AdminController::class, 'viewOrders'])->name('orders.index');
 });
 

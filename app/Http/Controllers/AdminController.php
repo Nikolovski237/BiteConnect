@@ -15,9 +15,9 @@ class AdminController extends Controller
     {
         $users = User::all();
         $restaurants = Restaurant::all();
-      //  $orders = Order::all();
+        $orders = Order::all();
 
-    return view('admin.layouts.app', compact('users', 'restaurants'/*, 'orders'*/));
+    return view('admin.layouts.app', compact('users', 'restaurants', 'orders'));
     }
 
 
@@ -185,5 +185,12 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Menu item deleted successfully');
     }
 
+    //ORDERS
+
+    public function viewOrders()
+    {
+        $orders = Order::all();
+        return view('admin.orders.index', compact('orders'));
+    }
 
 }

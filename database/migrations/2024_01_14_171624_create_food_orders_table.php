@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->decimal('total_price', 10, 2);
-            $table->text('delivery_address');
-            // Add other fields as needed
+            $table->decimal('total_price', 10, 2)->default(0.0);
+            $table->text('delivery_address')->default('None');
+            $table->string('status');
             $table->timestamps();
         });
     }
