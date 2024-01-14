@@ -37,9 +37,9 @@ Route::get('/', function () {
 
 Route::resource('/restaurants', RestaurantController::class);
 Route::get('/restaurants/food-type/{foodType}', [RestaurantController::class, 'showByFoodType'])->name('restaurants.showByFoodType');
-
 Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
 Route::get('/menus/{restaurant}', [MenuController::class, 'show'])->name('menus.show');
+
 
 // Cart Routes
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
@@ -53,16 +53,22 @@ Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('orde
 
 // Authenticated Routes
 Route::middleware(['auth', 'role:master_admin'])->group(function () {
+    Route::resource('/dashboard', RestaurantController::class);
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-    Route::resource('/users', UserController::class)->except(['create', 'store', 'destroy']);
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::post('/users/{user}', 'UserController@update')->name('users.update');
+
+    Route::get('/restaurants/{restaurant}/edit', [AdminController::class, 'edit'])->name('restaurants.edit');
+    Route::get('/restaurants/create', [AdminController::class, 'create'])->name('restaurants.create');
+    Route::delete('/restaurants/{restaurant}', [AdminController::class, 'destroy'])->name('restaurants.destroy');
     
-    Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
+    Route::resource('/users', AdminController::class)->except(['create', 'store', 'destroy']);
+    Route::get('/users', [AdminController::class, 'viewUsers'])->name('users');
+    Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('users.edit');
+    Route::post('/users/{user}', 'AdminController@update')->name('users.update');
     
     Route::delete('/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
     Route::put('/menus/{menu}', [MenuController::class, 'update'])->name('menus.update');
     Route::get('/menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
     Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
+    Route::get('/restaurants/{restaurant}/createmenu', [MenuController::class, 'create'])->name('restaurants.createmenu');
 });
 

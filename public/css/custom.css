@@ -1,24 +1,23 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #EBE4D1; /* Light gray background color */
+    background-color: #EBE4D1;
 }
 
 .carousel-control-prev,
 .carousel-control-next{
     top: 11rem;
-    width: 5rem; /* Adjust the width as needed */
-    height: 5rem; /* Adjust the height as needed */
-    background-color: #E55604; /* Change the background color as needed */
+    width: 5rem;
+    height: 5rem; 
+    background-color: #E55604; 
     border-radius: 100%;
 }
 
-/* Position carousel control buttons on the sides */
 .carousel-control-prev {
-    left: -3rem; /* Adjust the left position as needed */
+    left: -3rem;
 }
 
 .carousel-control-next {
-    right: -3rem; /* Adjust the right position as needed */
+    right: -3rem;
 }
 
 .carousel-inner{
@@ -28,16 +27,17 @@ body {
 }
 
 #foodTypesContainer {
-    max-width: 1500px; /* Adjust the value based on your preference */
+    max-width: 1500px;
 }
 
 .container {
-    background-color: #EBE4D1; /* White background for the main content area */
+    padding-top: 4rem;
+    background-color: #EBE4D1;
 }
 
 .custom-card-img {
-    height: 200px; /* Adjust the height as needed */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+    height: 200px;
+    object-fit: cover;
 }
 
 .card{
@@ -47,8 +47,8 @@ body {
 .card:hover{
     text-decoration: none;
     border-radius: 10%;
-    background-color: #f0f0f0; /* Change the background color to a different shade */
-    box-shadow: 0 0 10px #E55604; /* Add a subtle box shadow */
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px #E55604;
 }
 
 .card a:hover{

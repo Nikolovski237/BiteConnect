@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="images/biteconnect-high-resolution-logo-transparent.png" alt="Bite Connect Logo">
+            <img src="{{ asset('images/biteconnect-high-resolution-logo-transparent.png') }}" alt="Bite Connect Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
                 </li>
-                @endauth
+                @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
+                <li class="nav-item">
+                    <div class="mb-3">
+                        <a href="{{ url('/dashboard') }}" class="btn btn-success">Dashboard</a>
+                    </div>
+                </li>
+                @endif
+                @endauth        
+        
             </ul>
             <div class="form-search-container">
                 <form class="form-inline navbar-form">
