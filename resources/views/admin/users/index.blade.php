@@ -28,12 +28,17 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <div class="mb-3">
+                            <div class="btn-group" role="group" aria-label="User Actions">
                                 <a href="{{ route('users.edit', $user) }}" class="btn btn-success">Edit</a>
+                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">View</a>
+
+                                <!-- Button for deleting the user -->
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                </form>
                             </div>
-                        </td>
-                        <td>
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">View</a>
                         </td>
                     </tr>
                 @empty

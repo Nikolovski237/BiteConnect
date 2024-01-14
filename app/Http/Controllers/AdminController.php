@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Menu;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -37,15 +38,10 @@ class AdminController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    public function updateUser(Request $request, User $user)
-    {
-        return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
-    }
-
     public function deleteUser(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
+        return redirect()->route('users')->with('success', 'User deleted successfully');
     }
 
     public function updateUsers(Request $request, User $user)
@@ -62,21 +58,7 @@ class AdminController extends Controller
             'email' => $validatedData['email'],
         ]);
 
-        return redirect()->route('admin.users.index', $user)->with('success', 'User updated successfully');
-    }
-
-    public function storeUsers(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'role' => 'required|in:customer,restaurant_admin,master_admin',
-        ]);
-
-        User::create($request->all());
-
-        return redirect()->route('admin.users.index')->with('success', 'User created successfully');
+        return redirect()->route('users', $user)->with('success', 'User updated successfully');
     }
 
 
@@ -146,6 +128,61 @@ class AdminController extends Controller
         $restaurant->delete();
 
         return redirect()->route('admin.restaurants.restaurants')->with('success', 'Restaurant deleted successfully');
+    }
+
+    //MENU
+
+    public function showMenu(Restaurant $restaurant)
+    {
+        $menuItems = Menu::where('restaurant_id', $restaurant->id)->get();
+
+        return view('admin.menus.index', compact('restaurant', 'menuItems'));
+    }
+
+    public function createMenu()
+    {
+       $restaurants = Restaurant::all();
+       return view('admin.menus.create', compact('restaurants'));
+    }
+    
+    public function storeMenu(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'restaurant_id' => 'required|exists:restaurants,id',
+        ]);
+        Menu::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'restaurant_id' => $request->input('restaurant_id'),
+        ]);
+        return redirect()->route('menus.show', ['restaurant' => $request->input('restaurant_id')])
+            ->with('success', 'Menu item created successfully');   
+    }
+
+    public function editMenu(Menu $menu)
+    {
+        return view('admin.menus.edit', compact('menu'));
+    }
+
+    public function updateMenu(Request $request, Menu $menu)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+        ]);
+        $menu->update($validatedData);
+        return redirect()->route('menus.show', ['restaurant' => $menu->restaurant_id])->with('success', 'Menu item updated successfully');
+    }
+
+    public function destroyMenu(Menu $menu)
+    {
+        $menu->delete();
+        return redirect()->back()->with('success', 'Menu item deleted successfully');
     }
 
 
