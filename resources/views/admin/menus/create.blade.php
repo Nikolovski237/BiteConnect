@@ -22,6 +22,23 @@
             </div>
 
             <div class="form-group">
+                <label for="type">Type</label>
+                <select class="form-control" id="type" name="type">
+                    <option value="Burger">Burger</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Salad">Salad</option>
+                    <option value="Soup">Soup</option>
+                    <option value="Sandwich">Sandwich</option>
+                    <option value="Wraps">Wraps</option>
+                    <option value="Desert">Desert</option>
+                    <option value="Fish">Fish</option>
+                    <option value="BBQ">BBQ</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="restaurant_id">Restaurant</label>
                 <select class="form-control" id="restaurant_id" name="restaurant_id">
                     @foreach ($restaurants as $restaurant)

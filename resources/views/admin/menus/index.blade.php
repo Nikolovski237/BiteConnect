@@ -28,6 +28,7 @@
                         <td>{{ $menuItem->name }}</td>
                         <td>{{ $menuItem->description }}</td>
                         <td>{{ $menuItem->price }}</td>
+                        <td>{{ $menuItem->type }}</td>
                         @auth
                             <td>
                                 <a href="{{ route('menus.edit', ['restaurant' => $restaurant->id, 'menu' => $menuItem->id]) }}" class="btn btn-success">Edit</a>

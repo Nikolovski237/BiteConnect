@@ -15,9 +15,9 @@ class AdminController extends Controller
     {
         $users = User::all();
         $restaurants = Restaurant::all();
-        $orders = Order::all();
+        //$orders = Order::all();
 
-    return view('admin.layouts.app', compact('users', 'restaurants', 'orders'));
+    return view('admin.layouts.app', compact('users', 'restaurants',/* 'orders'*/));
     }
 
 
@@ -151,12 +151,14 @@ class AdminController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
+            'type' => 'required|in:Burger, Pizza, Pasta, Salad, Soup, Sandwich, Wraps, Desert, Fish, BBQ',
             'restaurant_id' => 'required|exists:restaurants,id',
         ]);
         Menu::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
+            'type' => $request->input('type'),
             'restaurant_id' => $request->input('restaurant_id'),
         ]);
         return redirect()->route('menus.index', ['restaurant' => $request->input('restaurant_id')])
@@ -173,6 +175,7 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'type' => 'required|in:Burger, Pizza, Pasta, Salad, Soup, Sandwich, Wraps, Desert, Fish, BBQ',
             'price' => 'required|numeric',
         ]);
         $menu->update($validatedData);
@@ -187,10 +190,10 @@ class AdminController extends Controller
 
     //ORDERS
 
-    public function viewOrders()
-    {
-        $orders = Order::all();
-        return view('admin.orders.index', compact('orders'));
-    }
+    // public function viewOrders()
+    // {
+    //     $orders = Order::all();
+    //     return view('admin.orders.index', compact('orders'));
+    // }
 
 }

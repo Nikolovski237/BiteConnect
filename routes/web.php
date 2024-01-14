@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
@@ -45,9 +45,9 @@ Route::post('/cart/add/{menuItemId}', [CartController::class, 'addToCart'])->nam
 Route::delete('/cart/{menuItemId}', [CartController::class, 'remove'])->name('cart.remove');
 
 // Order Routes
-Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
-Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
-Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
+// Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
+// Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
+// Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
 
 // Authenticated Routes
