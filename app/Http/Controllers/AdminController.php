@@ -136,7 +136,7 @@ class AdminController extends Controller
     {
         $menuItems = Menu::where('restaurant_id', $restaurant->id)->get();
 
-        return view('menus.index', compact('restaurant', 'menuItems'));
+        return view('admin.menus.index', compact('restaurant', 'menuItems'));
     }
 
     public function createMenu()
