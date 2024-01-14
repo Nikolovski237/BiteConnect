@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -54,16 +52,18 @@ Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('orde
 // Authenticated Routes
 Route::middleware(['auth', 'role:master_admin'])->group(function () {
     Route::resource('/dashboard', RestaurantController::class);
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
+    Route::get('/dashboard', [AdminController::class, 'viewRestaurants'])->name('restaurants.restaurants');
     Route::get('/restaurants/{restaurant}/edit', [AdminController::class, 'edit'])->name('restaurants.edit');
     Route::get('/restaurants/create', [AdminController::class, 'create'])->name('restaurants.create');
     Route::delete('/restaurants/{restaurant}', [AdminController::class, 'destroy'])->name('restaurants.destroy');
+    Route::put('/restaurants/{restaurant}', [AdminController::class, 'updateRestaurants'])->name('restaurants.update');
     
     Route::resource('/users', AdminController::class)->except(['create', 'store', 'destroy']);
     Route::get('/users', [AdminController::class, 'viewUsers'])->name('users');
-    Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('users.edit');
-    Route::post('/users/{user}', 'AdminController@update')->name('users.update');
+    Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
+    Route::get('/users/{user}', [AdminController::class, 'showUsers'])->name('users.show');
+    Route::put('/users/{user}', [AdminController::class, 'updateUsers'])->name('users.update');
     
     Route::delete('/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
     Route::put('/menus/{menu}', [MenuController::class, 'update'])->name('menus.update');

@@ -16,7 +16,7 @@ class AdminController extends Controller
         $restaurants = Restaurant::all();
       //  $orders = Order::all();
 
-    return view('admin.restaurants.restaurants', compact('users', 'restaurants'/*, 'orders'*/));
+    return view('admin.layouts.app', compact('users', 'restaurants'/*, 'orders'*/));
     }
 
 
@@ -25,6 +25,11 @@ class AdminController extends Controller
     {
         $users = User::all();
         return view('admin.users.index', compact('users'));
+    }
+
+    public function showUsers(User $user)
+    {
+        return view('admin.users.show', compact('user'));
     }
 
     public function editUser(User $user)
@@ -43,8 +48,45 @@ class AdminController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
     }
 
+    public function updateUsers(Request $request, User $user)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|string|in:customer,restaurant_admin,master_admin',
+        ]);
+
+        $user->role = $validatedData['role'];
+        $user->update([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+        ]);
+
+        return redirect()->route('admin.users.index', $user)->with('success', 'User updated successfully');
+    }
+
+    public function storeUsers(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'role' => 'required|in:customer,restaurant_admin,master_admin',
+        ]);
+
+        User::create($request->all());
+
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully');
+    }
+
 
     //Restaurants
+    public function viewRestaurants()
+    {
+        $restaurants = Restaurant::all();
+        return view('admin.restaurants.restaurants', compact('restaurants'));
+    }
+
     public function create()
     {
         return view('admin.restaurants.create');
@@ -77,7 +119,7 @@ class AdminController extends Controller
         return view('admin.restaurants.edit', compact('restaurant'));
     }
 
-    public function update(Request $request, Restaurant $restaurant)
+    public function updateRestaurants(Request $request, Restaurant $restaurant)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -90,21 +132,20 @@ class AdminController extends Controller
         $restaurantData = $request->except('image');
 
         if ($request->hasFile('image')) {
-
             $imagePath = $request->file('image')->store('public/images/restaurants');
             $restaurantData['image'] = Storage::url($imagePath);
         }
 
         $restaurant->update(array_merge($validatedData, $restaurantData));
 
-        return redirect()->route('admin.restaurants.restaurants')->with('success', 'Restaurant updated successfully');
+        return redirect()->route('restaurants.restaurants')->with('success', 'Restaurant updated successfully');
     }
 
     public function destroy(Restaurant $restaurant)
     {
         $restaurant->delete();
 
-        return redirect()->route('restaurants.index')->with('success', 'Restaurant deleted successfully');
+        return redirect()->route('admin.restaurants.restaurants')->with('success', 'Restaurant deleted successfully');
     }
 
 

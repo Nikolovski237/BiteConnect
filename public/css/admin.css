@@ -26,6 +26,10 @@ body {
     justify-content: center;
 }
 
+
+.table{
+    color: #bdbbb7;
+}
 .custom-card-img {
     height: 200px;
     object-fit: cover;
