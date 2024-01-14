@@ -93,7 +93,7 @@ class AdminController extends Controller
 
         Restaurant::create($restaurantData);
 
-        return redirect()->route('admin.restaurants.restaurants')->with('success', 'Restaurant created successfully');
+        return redirect()->route('restaurants.restaurants')->with('success', 'Restaurant created successfully');
     }
 
     public function edit(Restaurant $restaurant)
@@ -127,7 +127,7 @@ class AdminController extends Controller
     {
         $restaurant->delete();
 
-        return redirect()->route('admin.restaurants.restaurants')->with('success', 'Restaurant deleted successfully');
+        return redirect()->route('restaurants.restaurants')->with('success', 'Restaurant deleted successfully');
     }
 
     //MENU
@@ -136,7 +136,7 @@ class AdminController extends Controller
     {
         $menuItems = Menu::where('restaurant_id', $restaurant->id)->get();
 
-        return view('admin.menus.index', compact('restaurant', 'menuItems'));
+        return view('menus.index', compact('restaurant', 'menuItems'));
     }
 
     public function createMenu()
@@ -159,7 +159,7 @@ class AdminController extends Controller
             'price' => $request->input('price'),
             'restaurant_id' => $request->input('restaurant_id'),
         ]);
-        return redirect()->route('menus.show', ['restaurant' => $request->input('restaurant_id')])
+        return redirect()->route('menus.index', ['restaurant' => $request->input('restaurant_id')])
             ->with('success', 'Menu item created successfully');   
     }
 
@@ -176,7 +176,7 @@ class AdminController extends Controller
             'price' => 'required|numeric',
         ]);
         $menu->update($validatedData);
-        return redirect()->route('menus.show', ['restaurant' => $menu->restaurant_id])->with('success', 'Menu item updated successfully');
+        return redirect()->route('menus.index', ['restaurant' => $menu->restaurant_id])->with('success', 'Menu item updated successfully');
     }
 
     public function destroyMenu(Menu $menu)

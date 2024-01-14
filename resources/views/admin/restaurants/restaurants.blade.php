@@ -20,7 +20,7 @@
                         <!-- Buttons for Edit, View Menu, and Delete -->
                         <div class="btn-group" role="group" aria-label="Restaurant Actions">
                             <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ route('menus.show', $restaurant->id) }}" class="btn btn-success">View Menu</a>
+                            <a href="{{ route('menus.index', $restaurant->id) }}" class="btn btn-success">View Menu</a>
                             <form action="{{ route('restaurants.destroy', $restaurant->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')

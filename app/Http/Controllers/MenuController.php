@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
-    public function show(Restaurant $restaurant)
+    public function showMenu(Restaurant $restaurant)
     {
         $menuItems = Menu::where('restaurant_id', $restaurant->id)->get();
 

@@ -36,6 +36,7 @@ Route::get('/', function () {
 Route::resource('/restaurants', RestaurantController::class);
 Route::get('/restaurants/food-type/{foodType}', [RestaurantController::class, 'showByFoodType'])->name('restaurants.showByFoodType');
 Route::get('/restaurants/{restaurant}/menu', [MenuController::class, 'show'])->name('restaurants.menu');
+//Route::get('/menus/{restaurant}', [MenuController::class, 'showMenu'])->name('menus.show');
 
 
 
@@ -58,6 +59,7 @@ Route::middleware(['auth', 'role:master_admin'])->group(function () {
     Route::get('/restaurants/{restaurant}/edit', [AdminController::class, 'edit'])->name('restaurants.edit');
     Route::get('/restaurants/create', [AdminController::class, 'create'])->name('restaurants.create');
     Route::delete('/restaurants/{restaurant}', [AdminController::class, 'destroy'])->name('restaurants.destroy');
+    Route::post('/restaurants', [AdminController::class, 'store'])->name('restaurants.store');
     Route::put('/restaurants/{restaurant}', [AdminController::class, 'updateRestaurants'])->name('restaurants.update');
     
     //USERS
@@ -69,7 +71,7 @@ Route::middleware(['auth', 'role:master_admin'])->group(function () {
     Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.destroy');
     
     //MENU
-    Route::get('/menus/{restaurant}', [AdminController::class, 'showMenu'])->name('menus.show');
+    Route::get('/menus/{restaurant}', [AdminController::class, 'showMenu'])->name('menus.index');
     Route::delete('/menus/{menu}', [AdminController::class, 'destroyMenu'])->name('menus.destroy');
     Route::put('/menus/{menu}', [AdminController::class, 'updateMenu'])->name('menus.update');
     Route::get('/menus/{menu}/edit', [AdminController::class, 'editMenu'])->name('menus.edit');
