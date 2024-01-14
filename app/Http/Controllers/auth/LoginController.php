@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -37,16 +36,17 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    // Add this method to override the trait's method
-    protected function authenticated(Request $request, $user)
-    {
-        return redirect()->intended($this->redirectPath());
-    }
-
-    // Add this method to define the redirect path
     protected function redirectPath()
     {
-        // Customize the redirect path after successful login
-        return 'restaurants';
+        $user = Auth::user();
+
+        switch ($user->role) {
+            case 'master_admin':
+                return '/dashboard'; // Customize this for your admin dashboard path
+            case 'restaurant_admin':
+                return '/dashboard'; // Customize this for your restaurant admin dashboard path
+            default:
+                return '/'; // Default redirect path for other roles (e.g., customers)
+        }
     }
 }
