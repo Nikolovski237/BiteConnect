@@ -31,11 +31,9 @@ body {
 }
 
 .container {
-    max-width: 2000px;
     padding-top: 4rem;
     background-color: #EBE4D1;
 }
-
 
 .custom-card-img {
     height: 200px;
@@ -47,6 +45,7 @@ body {
     background-color: #ffffff;
 
 }
+
 .card:hover{
     text-decoration: none;
     border-radius: 10%;
@@ -70,28 +69,15 @@ h4{
     font-size: 2.5rem;
 }
 
-.imgcontainer {
-    position: relative;
-  }
-  
-.topright {
-  position: absolute;
-  top: -10px;
-  right: -20px;
-  font-size: 18px;
-}
-
-.card-img-top{
-    flex: 0 0 100px;
-}
-
-
 
 .AddButton{
     border: 0;
-    background-color: transparent;
+    background-color: #ffffff;
 }
 
+.card:hover .AddButton{
+    background-color: #f0f0f0;
+}
 
 .plusButton {
     /* Config start */
