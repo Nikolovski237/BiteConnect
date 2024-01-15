@@ -12,8 +12,9 @@ class CartController extends Controller
 {
     public function show()
     {
-        $cartItems = session('cart', []);
-        $totalPrice = array_sum(array_column($cartItems, 'price'));
+        // Assuming you're using the Cart model
+        $cartItems = Cart::where('user_id', auth()->id())->get();
+        $totalPrice = $cartItems->sum('price'); // Assuming each cart item has a 'price' attribute
 
         return view('cart.show', compact('cartItems', 'totalPrice'));
     }
@@ -21,54 +22,78 @@ class CartController extends Controller
     public function addToCart(Request $request, $id)
     {
         $menuItem = Menu::findOrFail($id);
-
+    
         // If the user is authenticated, associate the cart item with the user
         $userId = auth()->id();
-
+    
         $cart = Cart::where('menu_item_id', $menuItem->id)
                     ->where('user_id', $userId)
                     ->first();
-
+    
         if ($cart) {
-            // If the item is already in the cart, increment the quantity
-            $cart->update(['quantity' => DB::raw('quantity + 1')]);
+            // If the item is already in the cart, increment the quantity and update the total price
+            $cart->update([
+                'quantity' => $cart->quantity + 1,
+                'total_price' => $cart->total_price + $menuItem->price,
+            ]);
         } else {
-            // If the item is not in the cart, add it with quantity set to 1
+            // If the item is not in the cart, add it with quantity set to 1 and total price equal to the menu item price
             Cart::create([
                 'menu_item_id' => $menuItem->id,
                 'user_id' => $userId,
                 'quantity' => 1,
+                'total_price' => $menuItem->price,
+                // Add other attributes as needed
             ]);
         }
-
+    
         return redirect()->back()->with('success', 'Item added to the cart successfully.');
     }
-
-    public function remove($menuItemId)
+    
+    public function increment($id)
     {
-        $removed = $this->removeFromCart($menuItemId);
-
-        if ($removed) {
-            return redirect()->back()->with('success', 'Item removed from the cart successfully');
-        } else {
-            return redirect()->back()->with('error', 'Failed to remove item from the cart');
-        }
+        $cartItem = Cart::findOrFail($id);
+        $menuItemPrice = $cartItem->menuItem->price;
+    
+        $cartItem->update([
+            'quantity' => $cartItem->quantity + 1,
+            'total_price' => $cartItem->total_price + $menuItemPrice,
+        ]);
+    
+        return response()->json(['message' => 'Cart updated successfully']);
     }
-    public function removeFromCart($menuItemId)
+    
+    public function decrement($id)
     {
-        $cart = session()->get('cart', []);
-
-
-        if (isset($cart[$menuItemId])) {
-            
-            unset($cart[$menuItemId]);
-
-            session()->put('cart', $cart);
-
-            return redirect()->back()->with('success', 'Item removed from the cart successfully');
+        $cartItem = Cart::findOrFail($id);
+        $menuItemPrice = $cartItem->menuItem->price;
+    
+        if ($cartItem->quantity > 1) {
+            $cartItem->update([
+                'quantity' => $cartItem->quantity - 1,
+                'total_price' => $cartItem->total_price - $menuItemPrice,
+            ]);
         }
-
-        return redirect()->back()->with('error', 'Item not found in the cart');
+    
+        return response()->json(['message' => 'Cart updated successfully']);
+    }
+    
+    public function remove($id)
+    {
+        $cartItem = Cart::findOrFail($id);
+    
+        // If the quantity is more than 1, decrement it and update the total price; otherwise, delete the item
+        if ($cartItem->quantity > 1) {
+            $menuItemPrice = $cartItem->menuItem->price;
+            $cartItem->update([
+                'quantity' => $cartItem->quantity - 1,
+                'total_price' => $cartItem->total_price - $menuItemPrice,
+            ]);
+        } else {
+            $cartItem->delete();
+        }
+    
+        return redirect()->back();
     }
 
 }

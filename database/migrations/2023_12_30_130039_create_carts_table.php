@@ -10,12 +10,13 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('menu_item_id');
+            $table->unsignedBigInteger('menu_item_id'); // Corrected column name
             $table->unsignedBigInteger('user_id')->nullable();
             $table->integer('quantity')->default(1);
+            $table->integer('total_price')->default(1);
             $table->timestamps();
 
-            $table->foreign('menu_item_id')->references('id')->on('menu_items')->onDelete('cascade');
+            $table->foreign('menu_item_id')->references('id')->on('menus')->onDelete('cascade'); // Corrected table name
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }

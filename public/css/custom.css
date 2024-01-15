@@ -36,6 +36,40 @@ body {
     background-color: #EBE4D1;
 }
 
+.cartlist1{
+  list-style: none;
+  padding: 0;
+}
+
+.cartlist2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.price{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-box {
+  background-color: #ccc; /* Set background color as needed */
+  padding: 5px 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Set border radius as needed */
+  margin-left: 50px;
+}
+
+.quantity {
+  font-weight: bold; /* Optionally make the quantity bold */
+}
+
 
 .custom-card-img {
     height: 200px;

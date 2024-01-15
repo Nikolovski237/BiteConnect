@@ -55,24 +55,44 @@
                     </div>
                 @endforeach
             </div>
-            @auth
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3>Your Cart</h3>
-                            @if(auth()->user()->cartItems)
-                                <ul>
-                                    @foreach(auth()->user()->cartItems as $cartItem)
-                                        <li>{{ $cartItem->menuItem->name }} - Quantity: {{ $cartItem->quantity }}</li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <p>No items in the cart.</p>
-                            @endif
-                        </div>
+@auth
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Your Cart</h3>
+                @if(auth()->user()->cartItems->isNotEmpty())
+                    <ul class="cartlist1">
+                        @foreach(auth()->user()->cartItems as $cartItem)
+                            <li class="cartlist2">
+                                <div class="cart-item">
+                                    <span>{{ $cartItem->menuItem->name }}</span>
+                                    <div class="quantity-box">
+                                        <span class="quantity">{{ $cartItem->quantity }}</span>
+                                    </div>
+                                    <span class="price">
+                                        {{ $cartItem->total_price }}$
+                                    </span>
+                                    <form method="POST" action="{{ route('cart.remove', $cartItem->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">X</button>
+                                    </form>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="total-price">
+                        <strong>Total Price: {{ auth()->user()->cartItems->sum('total_price') }}$</strong>
                     </div>
-                </div>
-            @endauth
+                @else
+                    <p>No items in the cart.</p>
+                @endif
+            </div>
+        </div>
+    </div>
+@endauth
+
+
 
         </div>
     </div>
