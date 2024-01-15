@@ -41,8 +41,8 @@ Route::get('/menus/{restaurant}', [MenuController::class, 'showMenu'])->name('me
 
 // Cart Routes
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
-Route::post('/cart/add/{menuItemId}', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::delete('/cart/{menuItemId}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
 // Order Routes
 // Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
