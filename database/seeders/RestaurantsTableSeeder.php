@@ -25,7 +25,7 @@ class RestaurantsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Burger House',
-                'description' => 'Burger place we all love and know for years.',
+                'description' => 'Burger place we all love.',
                 'location' => 'Jane Sandanski 116',
                 'cost' => '$$',
                 'image' => asset('images/Restaurants/BurgerHouse.jpg'), 
