@@ -25,7 +25,7 @@
                             <div class="col-md-6 mb-4">
                                 <div class="card d-flex flex-row-reverse">
                                     <div class="imgcontainer">
-                                        <img src="{{ asset($restaurant->image) }}" class="card-img-top custom-card-img" alt="{{ $restaurant->name }}">
+                                        <img src="{{ asset($restaurant->image) }}" class="card-img-top custom-card-img" style="border-radius: 10%;" alt="{{ $restaurant->name }}">
                                         <div class="topright">
                                             <form method="POST" action="{{ route('cart.addToCart', $menuItem->id) }}">
                                                 @csrf
@@ -59,20 +59,12 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h3>Your Cart</h3>
-                            @if(auth()->user()->cartItems)
-                                <ul>
-                                    @foreach(auth()->user()->cartItems as $cartItem)
-                                        <li>{{ $cartItem->menuItem->name }} - Quantity: {{ $cartItem->quantity }}</li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <p>No items in the cart.</p>
-                            @endif
+                            @livewire('cart-component')
                         </div>
                     </div>
                 </div>
             @endauth
+
 
         </div>
     </div>
