@@ -13,7 +13,7 @@ class Cart extends Model
 
     public function menuItem()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class, 'menu_item_id');
     }
 
     public function user()

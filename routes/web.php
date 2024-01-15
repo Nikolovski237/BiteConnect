@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -49,6 +49,10 @@ Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.
 // Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 // Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+});
 
 // Authenticated Routes
 Route::middleware(['auth', 'role:master_admin'])->group(function () {

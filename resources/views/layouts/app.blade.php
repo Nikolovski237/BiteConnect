@@ -25,9 +25,6 @@
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                 </li>
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
-                </li>
                 @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
                 <li class="nav-item">
                     <div class="mb-3">

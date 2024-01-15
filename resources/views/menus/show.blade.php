@@ -84,6 +84,7 @@
                     <div class="total-price">
                         <strong>Total Price: {{ auth()->user()->cartItems->sum('total_price') }}$</strong>
                     </div>
+                    <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
                 @else
                     <p>No items in the cart.</p>
                 @endif
@@ -91,6 +92,7 @@
         </div>
     </div>
 @endauth
+
 
 
 
