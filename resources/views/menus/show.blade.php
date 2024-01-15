@@ -59,12 +59,20 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            @livewire('cart-component')
+                            <h3>Your Cart</h3>
+                            @if(auth()->user()->cartItems)
+                                <ul>
+                                    @foreach(auth()->user()->cartItems as $cartItem)
+                                        <li>{{ $cartItem->menuItem->name }} - Quantity: {{ $cartItem->quantity }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No items in the cart.</p>
+                            @endif
                         </div>
                     </div>
                 </div>
             @endauth
-
 
         </div>
     </div>
