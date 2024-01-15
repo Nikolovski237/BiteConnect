@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector; 
 use App\Models\Cart;
 use App\Models\Menu;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -17,20 +18,30 @@ class CartController extends Controller
         return view('cart.show', compact('cartItems', 'totalPrice'));
     }
 
-    public function addToCart(Request $request, $menuItemId)
+    public function addToCart(Request $request, $id)
     {
-        $menuItem = Menu::findOrFail($menuItemId);
+        $menuItem = Menu::findOrFail($id);
 
-        $cartItems = session('cart', []);
-        $cartItems[] = [
-            'menu_item_id' => $menuItem->id,
-            'name' => $menuItem->name,
-            'price' => $menuItem->price,
-        ];
+        // If the user is authenticated, associate the cart item with the user
+        $userId = auth()->id();
 
-        session(['cart' => $cartItems]);
+        $cart = Cart::where('menu_item_id', $menuItem->id)
+                    ->where('user_id', $userId)
+                    ->first();
 
-        return redirect()->back()->with('success', 'Item added to cart successfully');
+        if ($cart) {
+            // If the item is already in the cart, increment the quantity
+            $cart->update(['quantity' => DB::raw('quantity + 1')]);
+        } else {
+            // If the item is not in the cart, add it with quantity set to 1
+            Cart::create([
+                'menu_item_id' => $menuItem->id,
+                'user_id' => $userId,
+                'quantity' => 1,
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Item added to the cart successfully.');
     }
 
     public function remove($menuItemId)
