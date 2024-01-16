@@ -9,16 +9,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 // Authentication Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -29,9 +19,7 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register']);
 
 // Public Routes
-Route::get('/', function () {
-    return view('Home');
-});
+Route::get('/', function () {return view('home');});
 
 Route::resource('/restaurants', RestaurantController::class);
 Route::get('/restaurants/food-type/{foodType}', [RestaurantController::class, 'showByFoodType'])->name('restaurants.showByFoodType');
@@ -44,10 +32,6 @@ Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
 Route::delete('/cart/{menuItemId}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
-// Order Routes
-// Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
-// Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
-// Route::get('/orders/thankyou', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');

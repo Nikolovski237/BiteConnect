@@ -36,10 +36,8 @@ class CheckoutController extends Controller
         // Serialize cart items into JSON
         $selectedItems = $cartItems->map(function ($cartItem) {
             return [
-                'menu_item_name' => $cartItem->menuItem->name,
                 'quantity' => $cartItem->quantity,
                 'total_price' => $cartItem->total_price,
-                // Add other relevant information if needed
             ];
         });
 

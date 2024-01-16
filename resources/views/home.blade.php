@@ -19,15 +19,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                 </li>
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
-                </li>
                 @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
                 <li class="nav-item">
                     <div class="mb-3">
@@ -64,9 +58,22 @@
         </div>
     </nav>
 
-    <div class="container">
-    <h2>Hello World!</h2>
+    <div class="container mt-4 container-slightly-wider" id="foodTypesContainer">
+    @yield('content')
     </div>
+
+    <footer class="footer mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Bite Connect. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <p>Designed by Martin & Martin </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

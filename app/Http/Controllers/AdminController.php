@@ -189,11 +189,10 @@ class AdminController extends Controller
     }
 
     //ORDERS
-
-    // public function viewOrders()
-    // {
-    //     $orders = Order::all();
-    //     return view('admin.orders.index', compact('orders'));
-    // }
+    public function viewOrders()
+    {
+        $orders = Order::all();
+        return view('admin.orders.index', compact('orders'));
+    }
 
 }
