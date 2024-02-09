@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Menu;
+use Illuminate\Http\Request;
 
 
 class RestaurantController extends Controller
@@ -20,6 +21,12 @@ class RestaurantController extends Controller
         return view('restaurants.show', compact('restaurant'));
     }
     
+    public function showMenu(Restaurant $restaurant)
+    {
+        $menuItems = Menu::where('restaurant_id', $restaurant->id)->get();
+
+        return view('menus.show', compact('restaurant', 'menuItems'));
+    }
     
     public function showByFoodType($foodType)
     {

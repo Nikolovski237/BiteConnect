@@ -25,16 +25,6 @@ class UserTableSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        // Seed a user with the role 'restaurant_admin'
-        DB::table('users')->insert([
-            'name' => 'Restaurant Admin User',
-            'email' => 'restaurant_admin@example.com',
-            'password' => Hash::make('password'),
-            'role' => 'restaurant_admin',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
         // Seed a user with the role 'master_admin'
         DB::table('users')->insert([
             'name' => 'Master Admin User',

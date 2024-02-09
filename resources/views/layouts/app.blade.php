@@ -25,7 +25,7 @@
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                 </li>
                 @auth
-                @if(auth()->user()->isMasterAdmin() || auth()->user()->isRestaurantAdmin())
+                @if(auth()->user()->isMasterAdmin())
                 <li class="nav-item">
                     <div class="mb-3">
                         <a href="{{ url('/dashboard') }}" class="btn btn-success">Dashboard</a>

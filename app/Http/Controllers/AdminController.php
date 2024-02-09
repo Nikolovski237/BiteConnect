@@ -20,7 +20,6 @@ class AdminController extends Controller
     return view('admin.layouts.app', compact('users', 'restaurants',/* 'orders'*/));
     }
 
-
     //USERS
     public function viewUsers()
     {

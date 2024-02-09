@@ -29,6 +29,7 @@
                                         <div class="topright">
                                             <form method="POST" action="{{ route('cart.addToCart', $menuItem->id) }}">
                                                 @csrf
+                                                @auth
                                                 <button type="submit" class="AddButton">
                                                     <div tabindex="0" class="plusButton">
                                                         <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
@@ -38,6 +39,7 @@
                                                         </svg>
                                                     </div>
                                                 </button>
+                                                @endauth
                                             </form>
                                         </div>
                                     </div>
@@ -45,9 +47,7 @@
                                         <h5 class="card-title">{{ $menuItem->name }}</h5>
                                         <p class="card-text">{{ $menuItem->description }}</p>
                                         <p class="card-text">Price: {{ $menuItem->price }}</p>
-                                        @auth
-                                        <!-- Additional content for authenticated users if needed -->
-                                        @endauth
+
                                     </div>
                                 </div>
                             </div>

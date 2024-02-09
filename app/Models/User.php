@@ -26,10 +26,6 @@ class User extends Authenticatable
         return $this->role === 'master_admin';
     }
     
-    public function isRestaurantAdmin()
-    {
-        return $this->role === 'restaurant_admin';
-    }
 
     public function cart()
     {

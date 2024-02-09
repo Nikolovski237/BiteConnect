@@ -58,7 +58,7 @@ class CheckoutController extends Controller
         ]);
 
         // Clear the user's cart
-        Auth::user()->cartItems()->delete();
+        // Auth::user()->cartItems()->delete();
 
         // Redirect or perform additional actions as needed
         return redirect()->route('restaurants.index')->with('success', 'Order placed successfully!');
