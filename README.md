@@ -1,52 +1,145 @@
 
 ![biteconnect-high-resolution-logo](https://github.com/mn29983/BiteConnect/assets/148076319/d712018d-5b40-4147-abe4-f2abf8d5cd16)
 
-## About BiteConnect
+<a name="readme-top"></a>
+<div align="center">
+  <h3 align="center">Bite Connect</h3>
 
+  <p align="center">
+    A web page for ordering food from restaurants
+  </p>
+</div>
 
-Welcome to BiteConnect, your go-to website for ordering delicious food from the best local restaurants in town. Whether you're craving pizza, burger, or something in between, BiteConnect makes it easy to satisfy your hunger with just a few clicks.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
 
-## Features
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-- **Restaurant Selection**
-Browse through a diverse range of local restaurants, each offering a unique culinary experience. From casual diners to upscale eateries, we've got you covered.
+### Built With
 
-- **User-friendly Interface**
-Our intuitive and user-friendly interface ensures a seamless and enjoyable ordering experience. Easily navigate through menus, customize your order, and check out effortlessly.
+* [Laravel PHP](https://laravel.com/): A powerful PHP web application framework.
 
-- **Menu Customization**
-Tailor your order to perfection with our easy-to-use customization options. Extra cheese on your pizza? No problem. Hold the onions on your burger? Consider it done.
-
+<!-- GETTING STARTED -->
 ## Getting Started
 
-To get started with BiteConnect, follow these simple steps:
+This section will guide users on how to set up and run your Bite Connect system locally.
 
-- **Create an Account:**
-Sign up for a BiteConnect account to unlock a personalized experience. Save your favorite restaurants, track your order history, and receive exclusive offers.
+### Prerequisites
+* Visual Studio Code
+* PHP
+* XAMPP
+* Composer
+* MySql
 
-- **Browse Restaurants:**
-Explore the diverse selection of local restaurants. Filter by cuisine, ratings, and more to find the perfect dining option for any occasion.
+### Installation
 
-- **Place Your Order:**
-Select your desired items from the menu, customize as needed, and add them to your cart. Once you're satisfied, proceed to checkout.
+* Download the project
+* Open a terminal
+* Navigate to the project directory
+* Run the following commands:
+  ```sh
+  composer install
+  cp .env.example .env
+  php artisan key:generate
+  ```
+* Configure the database connection in the .env file with your MySQL credentials.
+  ```sh
+  php artisn migrate
+  php artisan db:seed
+  ```
 
-- **Secure Payment:**
-Choose your preferred payment method and complete the transaction securely. BiteConnect accepts various payment options for your convenience.
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- USAGE -->
+## Usage
 
-- **Enjoy Your Meal:**
-Once your order arrives, indulge in the delightful flavors of your favorite local cuisine. Don't forget to leave a review and share your experience!
+Welcome to Bite Connect - Your Ultimate Food Ordering Platform!
 
-- **Support and Feedback**
-Have questions or need assistance? Reach out to our dedicated support team at support@BiteConnect.com. We value your feedback and are continuously working to enhance your BiteConnect experience.
+### Admin Panel
 
-Thank you for choosing BiteConnect. We're excited to be a part of your culinary journey!
+* When loggin in with admin account will redirect to the dashboard.
 
-Happy Ordering!
+#### Creating a New Restaurant
+1. In the Navigation bar, click on the "Restaurants" option.
+2. Click on the "Create New Restaurant" button.
+3. Fill in the required details such as Restaurant Name, Description, Location, Cost and Upload an image.
+4. Click the "Create Restaurant" button to create a new Restaurant.
 
-## Security Vulnerabilities
+#### Editing/Updating a Restaurant
+1. In the Navigation bar, click on the "Restaurants" option.
+2. Locate the Restaurant you want to edit and click on the "Edit" option.
+3. Update the necessary information and click "Update Restaurant" to apply the changes.
 
-If you discover a security vulnerability within the Website, please send an e-mail to Martin Nikolovski via [mn29983@seeu.edu.mk](mailto:mn29983@seeu.edu.mk) or to Martin Aleksovski via [ma30190@seeu.edu.mk](mailto:ma30190@seeu.edu.mk). All security vulnerabilities will be promptly addressed.
+#### Deleting a Restaurant
+1. In the Navigation bar, click on the "Restaurants" option.
+2. Find the Restaurant you wish to delete and click on the "Delete" option.
 
+#### View All Orders
+1. In the Navigation bar, click on the "Orders" option.
+2. It will display all Orers made by the users.
+
+#### Users
+1. In the Navigation bar, click on the "Users" option.
+2. It will display all users that have made an account.
+   - Find the user you wish to delete and click on the "Delete" option.
+   - Find the user you wish to edit the user infromation and click on the "Edit" option
+   - Find the user you wish to view his infromation and click on the "View" option.
+
+#### Going to the User Site
+1. In the Navigation bar on the left sie, click on the "User Site" option.
+2. It will redirect you to the User site.
+
+### User Panel
+
+#### Viewing Restaurants and Food Categories
+1. In the Navigation bar, click on the "Restaurants" option.
+2. It will show all available Restaurants and Food Categories.
+
+#### Viewing the Menu
+1. Follow the previous steps.
+2. Locate the Restaurant you want to view and click on in.
+
+#### Adding to cart
+1. Follow the previous steps.
+2. Click on the "Plus".
+3. It will be added to the cart.
+
+#### Checking out
+1. Follow the previous steps.
+2. And on the right side of the menu you will the cart
+3. Click on the "Checkout" to continue making the order
+4. Fill in the required details such as Delivery infromation and Payment Details.
+5. Click on the "Place Order" to make the order.
+
+## Additional Notes
+
+- Ensure proper authentication and authorization when accessing the Admin Panel.
+- For security reasons, regular users are not granted access to administrative functionalities.
+
+Feel free to explore and use the various features available in the Bite Connect website. If you encounter any issues, please don't hesitate to report the bug.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
 ## License
 
-The BiteConnect website is under the [MIT license](https://opensource.org/licenses/MIT).
+Distributed under the MIT License. See `LICENSE.txt` for more information.
