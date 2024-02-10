@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('all-menu-items') }}">All Menu Items</a>
+                </li>
                 @auth
                 @if(auth()->user()->isMasterAdmin())
                 <li class="nav-item">
@@ -36,8 +39,9 @@
         
             </ul>
             <div class="form-search-container">
-                <form class="form-inline navbar-form">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <form action="{{ route('menus.search') }}" method="get" class="form-inline navbar-form">
+                    <input  class="form-control" type="text" name="query" id="query" value="{{ old('query') }}">
+                    <button type="submit">Search</button>
                 </form>
             </div>
             <ul class="navbar-nav ml-auto">

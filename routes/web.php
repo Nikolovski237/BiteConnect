@@ -1,11 +1,16 @@
 <?php
 
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\AdminMenuController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminRestaurantController;
+
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\CheckoutController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,7 +29,8 @@ Route::resource('/restaurants', RestaurantController::class);
 Route::get('/restaurants/food-type/{foodType}', [RestaurantController::class, 'showByFoodType'])->name('restaurants.showByFoodType');
 Route::get('/restaurants/{restaurant}/menu', [RestaurantController::class, 'showMenu'])->name('restaurants.menu');
 Route::get('/menus/{restaurant}', [RestaurantController::class, 'showMenu'])->name('menus.show');
-
+Route::get('/menus/search', [RestaurantController::class, 'searchMenuItems'])->name('menus.search');
+Route::get('/all-menu-items', [RestaurantController::class, 'showAllMenuItems'])->name('all-menu-items');
 
 // Cart Routes
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
@@ -41,32 +47,30 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'role:master_admin'])->group(function () {
     Route::resource('/dashboard', RestaurantController::class);
     
-    //USERS
-    Route::get('/users', [AdminController::class, 'viewUsers'])->name('users');
-    Route::get('/users/{user}', [AdminController::class, 'showUsers'])->name('users.show');
-    Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
-    Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.destroy');
-    Route::put('/users/{user}', [AdminController::class, 'updateUsers'])->name('users.update');
-    Route::resource('/users', AdminController::class)->except(['create', 'store', 'destroy']);
-    
     //RESTAURARNTS
-    Route::get('/dashboard', [AdminController::class, 'viewRestaurants'])->name('restaurants.restaurants');
-    Route::get('/restaurants/create', [AdminController::class, 'create'])->name('restaurants.create');
-    Route::post('/restaurants', [AdminController::class, 'store'])->name('restaurants.store');
-    Route::get('/restaurants/{restaurant}/edit', [AdminController::class, 'edit'])->name('restaurants.edit');
-    Route::put('/restaurants/{restaurant}', [AdminController::class, 'updateRestaurants'])->name('restaurants.update');
-    Route::delete('/restaurants/{restaurant}', [AdminController::class, 'destroy'])->name('restaurants.destroy');
+    Route::get('/dashboard', [AdminRestaurantController::class, 'viewRestaurants'])->name('restaurants.restaurants');
+    Route::get('/restaurants/create', [AdminRestaurantController::class, 'create'])->name('restaurants.create');
+    Route::post('/restaurants', [AdminRestaurantController::class, 'store'])->name('restaurants.store');
+    Route::get('/restaurants/{restaurant}/edit', [AdminRestaurantController::class, 'edit'])->name('restaurants.edit');
+    Route::put('/restaurants/{restaurant}', [AdminRestaurantController::class, 'updateRestaurants'])->name('restaurants.update');
+    Route::delete('/restaurants/{restaurant}', [AdminRestaurantController::class, 'destroy'])->name('restaurants.destroy');
+    
+    //USERS
+    Route::get('/users/index', [AdminUserController::class, 'viewUsers'])->name('users.viewUsers');
+    Route::get('/users/{user}', [AdminUserController::class, 'show'])->name('users.showUsers');
+    Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+    Route::resource('/users', AdminUserController::class)->except(['create', 'store', 'destroy']);
     
     //MENU
-    
-    Route::get('/menus/{restaurant}/index', [AdminController::class, 'showMenu'])->name('menus.index');
-    Route::get('/restaurants/{restaurant}/createmenu', [AdminController::class, 'createMenu'])->name('menus.create');
-    Route::post('/menus', [AdminController::class, 'storeMenu'])->name('menus.store');
-    Route::get('/menus/{menu}/edit', [AdminController::class, 'editMenu'])->name('menus.edit');
-    Route::put('/menus/{menu}', [AdminController::class, 'updateMenu'])->name('menus.update');
-    Route::delete('/menus/{menu}', [AdminController::class, 'destroyMenu'])->name('menus.destroy');
+    Route::get('/menus/{restaurant}/index', [AdminMenuController::class, 'showMenu'])->name('menus.index');
+    Route::get('/restaurants/{restaurant}/createmenu', [AdminMenuController::class, 'createMenu'])->name('menus.create');
+    Route::post('/menus', [AdminMenuController::class, 'storeMenu'])->name('menus.store');
+    Route::get('/menus/{menu}/edit', [AdminMenuController::class, 'editMenu'])->name('menus.edit');
+    Route::put('/menus/{menu}', [AdminMenuController::class, 'updateMenu'])->name('menus.update');
+    Route::delete('/menus/{menu}', [AdminMenuController::class, 'destroyMenu'])->name('menus.destroy');
 
     //ORDERS
-    Route::get('/orders', [AdminController::class, 'viewOrders'])->name('orders.index');
+    Route::get('/orders', [AdminMenuController::class, 'viewOrders'])->name('orders.index');
 });
 

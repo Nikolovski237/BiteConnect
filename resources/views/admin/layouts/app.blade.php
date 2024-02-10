@@ -23,7 +23,7 @@
 				<a href="{{ url('/dashboard') }}">
 					Restaurants
 				</a>
-				<a href="{{ url('/users') }}">
+				<a href="{{ url('/users/index') }}">
 					Users
 				</a>
 				<a href="{{ url('/orders') }}">

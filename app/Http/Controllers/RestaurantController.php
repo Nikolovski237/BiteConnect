@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Menu;
-use Illuminate\Http\Request;
-
 
 class RestaurantController extends Controller
 {
@@ -37,4 +36,23 @@ class RestaurantController extends Controller
         return view('restaurants.index', compact('restaurants'));
     }
 
+     public function searchMenuItems(Request $request)
+    {
+        $query = $request->input('query');
+    
+        if (empty($query)) {
+            return redirect()->route('menus.show')->with('error', 'Please enter a search query.');
+        }
+    
+        $menuItems = Menu::where('name', 'like', "%$query%")->get();
+    
+        return view('menus.search', ['menuItems' => $menuItems, 'query' => $query]);
+    } 
+
+    public function showAllMenuItems()
+    {
+        $menuItems = Menu::all();
+
+        return view('menus.all', compact('menuItems'));
+    }
 }
