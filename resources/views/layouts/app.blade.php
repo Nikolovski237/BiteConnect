@@ -38,12 +38,6 @@
                 @endauth        
         
             </ul>
-            <div class="form-search-container">
-                <form action="{{ route('menus.search') }}" method="get" class="form-inline navbar-form">
-                    <input  class="form-control" type="text" name="query" id="query" value="{{ old('query') }}">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
             <ul class="navbar-nav ml-auto">
                 @guest
                 <li class="nav-item">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('images/biteconnect-high-resolution-logo-transparent.png') }}" alt="Bite Connect Logo">
         </a>
@@ -19,7 +19,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('all-menu-items') }}">Menu Hub</a>
                 </li>
                 @auth
                 @if(auth()->user()->isMasterAdmin())
@@ -32,11 +38,6 @@
                 @endauth        
         
             </ul>
-            <div class="form-search-container">
-                <form class="form-inline navbar-form">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </div>
             <ul class="navbar-nav ml-auto">
                 @guest
                 <li class="nav-item">
@@ -59,7 +60,7 @@
     </nav>
 
     <div class="container mt-4 container-slightly-wider" id="foodTypesContainer">
-        @yield('content')
+        <h1>Home Page</h1>
     </div>
 
     <footer class="footer mt-4">
