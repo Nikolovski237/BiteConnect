@@ -27,13 +27,10 @@ class RestaurantController extends Controller
         return view('menus.show', compact('restaurant', 'menuItems'));
     }
     
-    public function showByFoodType($foodType)
+    public function showMenuByType($type)
     {
-        $restaurants = Restaurant::whereHas('menu.items', function ($query) use ($foodType) {
-            $query->where('type', $foodType);
-        })->get();
-
-        return view('restaurants.index', compact('restaurants'));
+        $menuItems = Menu::where('type', $type)->get();
+        return view('menus.by_type', compact('menuItems', 'type'));
     }
 
      public function searchMenuItems(Request $request)

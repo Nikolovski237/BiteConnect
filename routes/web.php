@@ -31,6 +31,7 @@ Route::get('/restaurants/{restaurant}/menu', [RestaurantController::class, 'show
 Route::get('/menus/{restaurant}', [RestaurantController::class, 'showMenu'])->name('menus.show');
 Route::get('/menus/search', [RestaurantController::class, 'searchMenuItems'])->name('menus.search');
 Route::get('/all-menu-items', [RestaurantController::class, 'showAllMenuItems'])->name('all-menu-items');
+Route::get('/menu/{type}', [RestaurantController::class, 'showMenuByType'])->name('menu.by.type');
 
 // Cart Routes
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');

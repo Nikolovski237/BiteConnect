@@ -4,7 +4,7 @@
         <div class="carousel-item active">
             <div class="card-deck">
                 <div class="card">
-                    <a href="#">
+                    <a href="{{ route('menu.by.type', ['type' => 'Burger']) }}">
                         <img src="{{ asset('images/Food/Burger.jpg') }}" class="card-img-top custom-card-img" alt="Burger" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Burger</h5>
@@ -12,7 +12,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Pizza']) }}">
                         <img src="{{ asset('images/Food/Pizza.jpg') }}" class="card-img-top custom-card-img" alt="Pizza" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Pizza</h5>
@@ -20,7 +20,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Pasta']) }}">
                         <img src="{{ asset('images/Food/Pasta.jpg') }}" class="card-img-top custom-card-img" alt="Pasta" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Pasta</h5>
@@ -28,7 +28,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Salad']) }}">
                         <img src="{{ asset('images/Food/Salad.jpg') }}" class="card-img-top custom-card-img" alt="Salad" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Salad</h5>
@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Soup']) }}">
                         <img src="{{ asset('images/Food/Soup.jpg') }}" class="card-img-top custom-card-img" alt="Soup" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Soup</h5>
@@ -49,7 +49,7 @@
         <div class="carousel-item">
             <div class="card-deck">
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Sandwich']) }}">
                         <img src="{{ asset('images/Food/Sandwich.jpg') }}" class="card-img-top custom-card-img" alt="Sandwich" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Sandwich</h5>
@@ -57,7 +57,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Wrap']) }}">
                         <img src="{{ asset('images/Food/Wrap.jpg') }}" class="card-img-top custom-card-img" alt="Wrap" loading="lazy"> 
                         <div class="card-body">
                             <h5 class="card-title">Wraps</h5>
@@ -65,7 +65,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Pancake']) }}">
                         <img src="{{ asset('images/Food/Pancake.jpg') }}" class="card-img-top custom-card-img" alt="Desert" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Desert</h5>
@@ -73,7 +73,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'Fish']) }}">
                         <img src="{{ asset('images/Food/Fish.jpg') }}" class="card-img-top custom-card-img" alt="Fish" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Fish</h5>
@@ -81,7 +81,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="#">
+                <a href="{{ route('menu.by.type', ['type' => 'BBQ']) }}">
                         <img src="{{ asset('images/Food/BBQ.jpg') }}" class="card-img-top custom-card-img" alt="BBQ" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">BBQ</h5>

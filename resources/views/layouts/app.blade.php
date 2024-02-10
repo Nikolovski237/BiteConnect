@@ -25,7 +25,7 @@
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('all-menu-items') }}">All Menu Items</a>
+                    <a class="nav-link" href="{{ route('all-menu-items') }}">Menu Hub</a>
                 </li>
                 @auth
                 @if(auth()->user()->isMasterAdmin())
