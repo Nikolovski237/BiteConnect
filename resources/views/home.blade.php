@@ -19,9 +19,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('restaurants.index') }}">Restaurants</a>
                 </li>
                 <li class="nav-item">
@@ -57,11 +54,41 @@
                 @endguest
             </ul>
         </div>
-    </nav>
+    </nav>  
 
-    <div class="container mt-4 container-slightly-wider" id="foodTypesContainer">
-        <h1>Home Page</h1>
+
+<div class="container mt-4 container-slightly-wider" id="foodTypesContainer">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to Bite Connect</h1>
+        <p class="lead">Your culinary journey begins here!</p>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Discover Local Flavors</h2>
+            <p>Indulge in a world of exquisite tastes from the best local restaurants in your area. Our diverse culinary selection caters to every palate, ensuring a delightful dining experience.</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Effortless Ordering</h2>
+            <p>Experience the ease of ordering your favorite dishes with just a few clicks. Browse through carefully curated menus, customize your orders, and enjoy the convenience of doorstep delivery or quick pickup.</p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Menu Hub</h2>
+            <p>Explore our Menu Hub to discover the latest culinary trends, special offers, and exclusive promotions from our partner restaurants. Your next delicious meal is just a click away!</p>
+            <a href="{{ route('all-menu-items') }}" class="btn btn-primary">Explore Menu Hub</a>
+        </div>
+        <div class="col-md-6">
+            <h2>Bite Connect Community</h2>
+            <p>Join our vibrant community of food enthusiasts. Share your reviews, recommend hidden gems, and connect with fellow foodies. Because great meals are even better when shared!</p>
+        </div>
+    </div>
+
+    <p class="mt-5">Ready to embark on a delightful gastronomic journey? Start exploring with Bite Connect today!</p>
+</div>
+
 
     <footer class="footer mt-4">
         <div class="container">
